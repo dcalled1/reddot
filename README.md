@@ -5,6 +5,12 @@
 
 ## Build
 
+### Install and update dependencies
+
+```bash
+composer update
+```
+
 
 ## License
 [MIT](LICENSE)
