@@ -4,7 +4,7 @@
 
 ### Create a new development branch
 
-Create a new branch named `dev-<username>` (put your institutional username instead of `<username>`. I.E: `dev-dcalled1`).
+Create a new branch named `dev-<username>` (put your institutional username instead of `<username>`, e.g `dev-dcalled1`).
 ```bash
 git checkout -b dev-<username>
 ```
