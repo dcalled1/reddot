@@ -49,7 +49,7 @@ Go to `Pull Requests` and create a new one (from your development branch `dev-<u
 composer update
 ```
 
-### Run
+### Runn
 
 ```bash
 php artisan serve
