@@ -59,30 +59,30 @@ class User extends Authenticatable
     ];
 
     public function memberCommunities() {
-        return $this->belongsToMany('App\Models\Community', 'user_member_community');
+        return $this->belongsToMany(Community::class, 'user_member_community');
     }
 
     public function adminCommunities() {
-        return $this->belongsToMany('App\Models\Community', 'user_admin_community');
+        return $this->belongsToMany(Community::class, 'user_admin_community');
     }
 
     public function modCommunities() {
-        return $this->belongsToMany('App\Models\Community', 'user_mod_community');
+        return $this->belongsToMany(Community::class, 'user_mod_community');
     }
 
-    public function posts() {
-        return $this->hasMany('App\Models\Post', 'author_id');
+    public function createdPosts() {
+        return $this->hasMany(Post::class, 'author_id');
     }
 
     public function likedPosts() {
-        return $this->belongsToMany('App\Models\Post', 'user_like_post');
+        return $this->belongsToMany(Post::class, 'user_like_post');
     }
 
     public function dislikedPosts() {
-        return $this->belongsToMany('App\Models\Post', 'user_dislike_post');
+        return $this->belongsToMany(Post::class, 'user_dislike_post');
     }
 
     public function savedPosts() {
-        return $this->belongsToMany('App\Models\Post', 'user_save_post');
+        return $this->belongsToMany(Post::class, 'user_save_post');
     }
 }

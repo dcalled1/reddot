@@ -132,13 +132,13 @@ class Comment extends Model
     //Likes
     public function likes()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_dislike_comment');
     }
 
     //Dislikes
     public function dislikes()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_dislike_comment');
     }
 
     //Father
