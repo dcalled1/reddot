@@ -58,23 +58,31 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function getId() {
+        return $this->attributes['id'];
+    }
+
     public function memberCommunities() {
         return $this->belongsToMany(Community::class, 'user_member_community');
     }
 
-    public function adminCommunities() {
+    /*public function adminCommunities() {
         return $this->belongsToMany(Community::class, 'user_admin_community');
-    }
+    }*/
 
-    public function modCommunities() {
+    /*public function modCommunities() {
         return $this->belongsToMany(Community::class, 'user_mod_community');
+    }*/
+
+    public function adminCommunities(){
+        return $this->hasMany(Community::class, 'admin_id');
     }
 
     public function createdPosts() {
         return $this->hasMany(Post::class, 'author_id');
     }
 
-    public function likedPosts() {
+    /*public function likedPosts() {
         return $this->belongsToMany(Post::class, 'user_like_post');
     }
 
@@ -84,5 +92,5 @@ class User extends Authenticatable
 
     public function savedPosts() {
         return $this->belongsToMany(Post::class, 'user_save_post');
-    }
+    }*/
 }
