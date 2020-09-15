@@ -118,7 +118,7 @@ class Comment extends Model
     //Relationship with Post
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo('App\Models\Post', 'post_id');
     }
 
     //Relationships with User
