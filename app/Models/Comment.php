@@ -118,7 +118,7 @@ class Comment extends Model
     //Relationship with Post
     public function post()
     {
-        return $this->belongsTo('App\Models\Post', 'post_id');
+        return $this->belongsTo(Post::class);
     }
 
     //Relationships with User
@@ -126,13 +126,13 @@ class Comment extends Model
     //Author
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     //Likes
     public function likes()
     {
-        return $this->belongsToMany(User::class, 'user_dislike_comment');
+        return $this->belongsToMany(User::class, 'user_like_comment');
     }
 
     //Dislikes
