@@ -21,8 +21,8 @@ class CreatePostsTable extends Migration
             //$table->integer('dislike_id');
             $table->foreignId('community_id')->constrained('communities');
             $table->string('content');
-            $table->string('tags');
-            $table->string('topics');
+            $table->string('tags')->nullable();
+            $table->string('topics')->nullable();
             $table->integer('interactions');
             $table->timestamps();
         });

@@ -57,4 +57,32 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function memberCommunities() {
+        return $this->belongsToMany('App\Models\Community', 'user_member_community');
+    }
+
+    public function adminCommunities() {
+        return $this->belongsToMany('App\Models\Community', 'user_admin_community');
+    }
+
+    public function modCommunities() {
+        return $this->belongsToMany('App\Models\Community', 'user_mod_community');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Models\Post', 'author_id');
+    }
+
+    public function likedPosts() {
+        return $this->belongsToMany('App\Models\Post', 'user_like_post');
+    }
+
+    public function dislikedPosts() {
+        return $this->belongsToMany('App\Models\Post', 'user_dislike_post');
+    }
+
+    public function savedPosts() {
+        return $this->belongsToMany('App\Models\Post', 'user_save_post');
+    }
 }
