@@ -16,22 +16,22 @@ class Community extends Model {
 
 
     public function members() {
-        return $this->belongsToMany('App\Models\User', 'user_member_community');
+        return $this->belongsToMany(User::class, 'user_member_community');
     }
 
     public function admins() {
-        return $this->belongsToMany('App\Models\User', 'user_admin_community');
+        return $this->belongsToMany(User::class, 'user_admin_community');
     }
 
     public function mods() {
-        return $this->belongsToMany('App\Models\User', 'user_mod_community');
+        return $this->belongsToMany(User::class, 'user_mod_community');
     }
 
     public function posts() {
-        return $this->hasMany('App\Models\Post', 'community_id');
+        return $this->hasMany(Post::class, 'community_id');
     }
 
     public function announcements() {
-        return $this->hasMany('App\Models\Announcement', 'community_id');
+        return $this->hasMany(Announcement::class, 'community_id');
     }
 }

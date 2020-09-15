@@ -47,23 +47,23 @@ class Post extends Model
     }
 
     public function author() {
-        return $this->belongsTo('App\Models\User', 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function likes() {
-        return $this->belongsToMany('App\Models\User', 'user_like_post');
+        return $this->belongsToMany(User::class, 'user_like_post');
     }
 
     public function dislikes() {
-        return $this->belongsToManny('App\Models\User', 'user_dislike_post');
+        return $this->belongsToManny(User::class, 'user_dislike_post');
     }
     
     public function community() {
-        return $this->belongsTo('App\Models\Community', 'community_id');
+        return $this->belongsTo(Community::class, 'community_id');
     }
 
     public function comments() {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     public function getContent() {
