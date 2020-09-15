@@ -22,7 +22,7 @@ class Announcement extends Model
     topics
     created
     */ 
-    protected $fillable = ['author','community','content','tags','topics','expire'];
+    protected $fillable = ['author', 'title', 'community','content','tags','topics','expire'];
 
 
     //Metodos

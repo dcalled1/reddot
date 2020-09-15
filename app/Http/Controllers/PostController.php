@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Models\Post;
+use App\Models\Community;
 use Validator;
 
 class PostController extends Controller
@@ -13,15 +14,18 @@ class PostController extends Controller
     {
         $data = []; 
         $data["title"] = "Create Post";
-
+        error_log('Some message here.');
+        $data["community"] = Community::get('name');
         return view('post.create')->with("data",$data);
     }
 
     //Save Function
     public function save(Request $request)
     {
+        error_log('Some message here.');
+        $community = Community::findOrFail($request['community']);
         Post::validate($request);
-        Post::create($request->only(['author','community','content','tags','topics','interactions']));
+        Post::create($request->only([$community,'content','tags','topics']));
         $data = [];
         $data["success"] = 'Post created correctly!';
         return back()->with('data', $data);
@@ -91,7 +95,7 @@ class PostController extends Controller
             return null;
         }
         $user = Auth::user();
-        $like = $user->likes()->where('post_id', $post_id)->first();
+        $like = $user->likedPosts()->where('post_id', $post_id)->first();
         //$dislike = $user->dislikes()->where('post_id', $post_id)->first();
         if ($like /*&& !$dislike*/) {
             $already_like = $like->like;
@@ -133,7 +137,7 @@ class PostController extends Controller
         }
         $user = Auth::user();
         //$like = $user->likes()->where('post_id', $post_id)->first();
-        $dislike = $user->dislikes()->where('post_id', $post_id)->first();
+        $dislike = $user->dislikedPosts()->where('post_id', $post_id)->first();
         if (/*!$like &&*/ $dislike) {
             $already_dislike = $dislike->dislike;
             $update = true;

@@ -13,8 +13,6 @@ class Community extends Model {
 
 
 
-
-
     public function members() {
         return $this->belongsToMany(User::class, 'user_member_community');
     }

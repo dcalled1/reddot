@@ -15,6 +15,7 @@ class Post extends Model
     atributos:
     id(auto-incrementable)
     author
+    title
     likes
     dislikes
     community
@@ -25,7 +26,7 @@ class Post extends Model
     interactions
     created
     */ 
-    protected $fillable = ['author','community','content','tags','topics','interactions'];
+    protected $fillable = ['author', 'title', 'community','content','tags','topics'];
 
 
     //Metodos
