@@ -115,19 +115,41 @@ class Comment extends Model
         return $this->created_at;
     }
 
-    //Relationship to Post (one to many)
-    public function getPostId()
-    {
-        return $this->attributes['post_id'];
-    }
-
-    public function setPostId($pId)
-    {
-        $this->attributes['post_id'] = $pId;
-    }
-
+    //Relationship with Post
     public function post()
     {
         return $this->belongsTo(Post::class);
+    }
+
+    //Relationships with User
+
+    //Author
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    //Likes
+    public function likes()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    //Dislikes
+    public function dislikes()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    //Father
+    public function father()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
+    //Comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
