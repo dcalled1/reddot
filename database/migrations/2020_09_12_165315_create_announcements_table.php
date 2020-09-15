@@ -13,7 +13,7 @@ class CreateAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->integer('author_id');
@@ -35,6 +35,6 @@ class CreateAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('announcements');
     }
 }
