@@ -46,16 +46,32 @@ class Post extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function author() {
+    public function getLikes(){
+        $this->attributes['likes'];
+    }
+
+    public function getDislikes(){
+        $this->attributes['dislikes'];
+    }
+
+    public function getAuthor(){
+        $this->attributes['author'];
+    }
+
+    public function getCommunity(){
+        $this->attributes['community'];
+    }
+
+    public function author(){
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function likes() {
-        return $this->belongsToMany(User::class, 'user_like_post');
+    public function likes(){
+        return $this->belongsToManny(User::class, 'user_likes_post');
     }
 
-    public function dislikes() {
-        return $this->belongsToManny(User::class, 'user_dislike_post');
+    public function dislikes(){
+        return $this->belongsToManny(User::class, 'user_dislikes_post');
     }
     
     public function community() {

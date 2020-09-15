@@ -43,16 +43,32 @@ class Announcement extends Model
         $this->attributes['id'] = $id;
     }
 
+    public function getLikes(){
+        $this->attributes['likes'];
+    }
+
+    public function getDislikes(){
+        $this->attributes['dislikes'];
+    }
+
+    public function getAuthor(){
+        $this->attributes['author'];
+    }
+
+    public function getCommunity(){
+        $this->attributes['community'];
+    }
+
     public function author(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function likes(){
-        return $this->hasMany(Like::class);
+        return $this->belongsToManny(User::class, 'user_likes_announcement');
     }
 
     public function dislikes(){
-        return $this->hasMany(DislikePost::class);
+        return $this->belongsToManny(User::class, 'user_dislikes_announcement');
     }
 
     public function community(){
