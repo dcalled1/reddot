@@ -15,6 +15,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->foreignId('author_id')->constrained('users');
+            //$table->integer('like_id');
+            //$table->integer('dislike_id');
+            $table->foreignId('community_id')->constrained('communities');
+            $table->string('content');
+            $table->string('tags');
+            $table->string('topics');
+            $table->integer('interactions');
             $table->timestamps();
         });
     }
