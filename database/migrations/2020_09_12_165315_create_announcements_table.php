@@ -13,8 +13,17 @@ class CreateAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('announcements', function (Blueprint $table) {
-            $table->id();
+        Schema::create('posts', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->integer('author_id');
+            $table->integer('like_id');
+            $table->integer('dislike_id');
+            $table->integer('community_id');
+            $table->string('content');
+            $table->string('tags');
+            $table->string('topics');
+            $table->date('expire');
             $table->timestamps();
         });
     }
@@ -26,6 +35,6 @@ class CreateAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('posts');
     }
 }
