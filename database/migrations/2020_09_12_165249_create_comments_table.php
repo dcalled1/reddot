@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer('level');
             $table->foreignId('author_id')->constrained('users');
             $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('father_id')->constrained('comments')->nullable();
             $table->timestamps();
         });
     }
