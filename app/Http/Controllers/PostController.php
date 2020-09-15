@@ -10,22 +10,19 @@ use Validator;
 class PostController extends Controller
 {
     //Create function
-    public function create()
+    public function create($community)
     {
         $data = []; 
         $data["title"] = "Create Post";
-        error_log('Some message here.');
-        $data["community"] = Community::get('name');
+        $data["community"] = $community;
         return view('post.create')->with("data",$data);
     }
 
     //Save Function
     public function save(Request $request)
     {
-        error_log('Some message here.');
-        $community = Community::findOrFail($request['community']);
         Post::validate($request);
-        Post::create($request->only([$community,'content','tags','topics']));
+        Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
         $data = [];
         $data["success"] = 'Post created correctly!';
         return back()->with('data', $data);
@@ -56,16 +53,17 @@ class PostController extends Controller
     }
 
     //List post
-    public function show()
+    public function index($community)
     {
         $data = [];
         $data["title"] = "Posts Dashboard";
-        $data["post"] = Post::all();
-        return view('post.show')->with("data",$data);
+        $data["post"] = Post::all()->where('community_id', $community);
+        $data["community"] = $community;
+         return view('post.index')->with("data",$data);
     }
 
     //List specific id
-    public function showid($id)
+    public function show($post)
     {
         $post = Post::findOrFail($id);
 

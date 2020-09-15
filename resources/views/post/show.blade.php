@@ -10,32 +10,14 @@
             <div class="card">
                 <div class="card-header d-flex">
                 Posts
-                <a href="{{ route('post.create') }}" class="ml-auto btn btn-primary">Create Post</a>
-                
+                <a href="#" class="ml-auto btn btn-danger">Delete Post</a>
+                <a href="#" class="ml-auto btn btn-primary">Update Post</a>
                 </div>
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="table-responsive-lg col-12">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Topics</th>
-                                        <th>Tags</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data["post"] as $p)
-                                            <tr>
-                                                <td><b><a href="{{ route('p.showid', $p->getId()) }}">{{ $p->getTitle() }}</a></b></td>
-                                                <td>{{ $p->getTopics() }}</td>
-                                                <td>{{ $p->getTags() }}</td>
-                                            </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        <h1>{{ $post['title'] }}</h1>
+                        <p> {{ $post['content'] }}</p>
                     </div>
                 </div>
             </div>

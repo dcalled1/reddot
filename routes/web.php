@@ -20,3 +20,12 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+//Route::get('/', 'HomeController@index')->name("home.index");
+
+
+Route::get('/{community}/create', 'App\Http\Controllers\PostController@create')->name("post.create");
+Route::get('/{community}/posts/index', 'App\Http\Controllers\PostController@index')->name("post.index");
+Route::get('/{community}/posts/show/{post}', 'App\Http\Controllers\PostController@show')->name("post.show");
+Route::post('/post/save', 'App\Http\Controllers\PostController@save')->name("post.save");

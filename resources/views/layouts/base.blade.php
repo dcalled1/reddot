@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="navbar-brand color-white" href="{{ route('post.show') }}">Posts</a>
+                        <a class="navbar-brand color-white" href="#">Posts</a>
                         <a class="navbar-brand color-white" href="#">Communities</a>
                         <a class="navbar-brand color-white" href="#">Users</a>
                     </ul>

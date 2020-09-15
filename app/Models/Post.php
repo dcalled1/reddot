@@ -26,8 +26,9 @@ class Post extends Model
     interactions
     created
     */ 
-    protected $fillable = ['author', 'title', 'community','content','tags','topics'];
+    protected $fillable = ['title', 'author_id', 'community_id', 'content', 'tags', 'topics'];
 
+    protected $attributes = ['interactions' => 0];
 
     //Metodos
 
@@ -64,7 +65,7 @@ class Post extends Model
     }
 
     public function author(){
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function likes(){
@@ -97,6 +98,14 @@ class Post extends Model
 
     public function setTags($tags) {
         $this->attributes['tags'] = $tags;
+    }
+
+    public function getTopics() {
+        return $this->attributes['topics'];
+    }
+
+    public function setTopics($topics) {
+        $this->attributes['topics'] = $topics;
     }
 
     public function getTitle() {
