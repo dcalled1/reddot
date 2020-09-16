@@ -30,13 +30,42 @@
                             <br>
                             <p class="test-justify"> {{ $post['content'] }}</p>
                             <div class="d-flex">
-                                <div class="row ml-auto mt-5">
+                                <div class="row ml-auto my-5">
                                     <h6>Tags: {{ $post['tags'] }}</h6>
                                     <h6 class="ml-2">Topics: {{ $post['topics'] }}</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @foreach($post->comments as $comment)
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="mr-auto">
+                                        Comentario Hecho Por: {{ $comment->author->name }}
+                                    </div>
+                                    <div class="ml-auto">
+                                        {{ $comment->created_at }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    {{ $comment->content }}
+                                </div>
+                                <div class="row">
+                                    @if (Auth::user()->id == $comment->author->id)
+                                        <div class="ml-auto">
+                                            <a href="{{ route('comment.update', [$post['community_id'], $post['id'], $comment['id']]) }}">Edit</a>
+                                            <form action="{{ route('comment.delete') }}" method="POST">
+                                                <input type="submit" value="Delete" class="btn btn-link">
+                                            </form>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -49,3 +49,9 @@ Route::post('/announcement/save', 'App\Http\Controllers\AnnouncementController@s
 Route::get('/{community}/announcements/update/{announcement}', 'App\Http\Controllers\AnnouncementController@update')->name("announcement.update");
 Route::post('announcement/save_update', 'App\Http\Controllers\AnnouncementController@saveUpdate')->name("announcement.save_update");
 Route::post('announcement/delete', 'App\Http\Controllers\AnnouncementController@delete')->name("announcement.delete");
+//Comment
+Route::get('/{community}/{post}/comments/create', 'App\Http\Controllers\CommentController@create')->name("comment.create");
+Route::get('/{community}/{post}/comments/update/{comment}', 'App\Http\Controllers\CommentController@update')->name("comment.update");
+Route::post('/comment/save', 'App\Http\Controllers\CommentController@save')->name("comment.save");
+Route::post('/comment/update', 'App\Http\Controllers\CommentController@saveUpdate')->name("comment.save_update");
+Route::post('/comment/delete', 'App\Http\Controllers\CommentController@delete')->name("comment.delete");
