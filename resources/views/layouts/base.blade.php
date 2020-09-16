@@ -26,7 +26,19 @@
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <a class="navbar-brand color-white" href="/login">Login</a>
+                        @if (Auth::user())
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="{{ route('logout') }}" class="navbar-brand color-white"
+                                                    onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                            </form>
+                        @else
+                            <a class="navbar-brand color-white" href="/login">Login</a>
+                            <a class="navbar-brand color-white" href="/register">Register</a>
+                        @endif
                     </ul>
                 </div>
             </div>
