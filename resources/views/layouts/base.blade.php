@@ -11,7 +11,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm text-uppercase">
             <div class="container">
-                <a class="navbar-brand color-white" href="{{ route(home.index) }}">
+                <a class="navbar-brand color-white" href="#">
                     Inicio
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -23,6 +23,10 @@
                     <ul class="navbar-nav mr-auto">
                         <a class="navbar-brand color-white" href="#">Communities</a>
                         <a class="navbar-brand color-white" href="#">Users</a>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <a class="navbar-brand color-white" href="/login">Login</a>
                     </ul>
                 </div>
             </div>
