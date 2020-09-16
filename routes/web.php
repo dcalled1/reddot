@@ -24,14 +24,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Route::get('/', 'HomeController@index')->name("home.index");
 
-
-Route::get('/{community}/create', 'App\Http\Controllers\PostController@create')->name("post.create");
+//Post
+Route::get('/{community}/post/create', 'App\Http\Controllers\PostController@create')->name("post.create");
 Route::get('/{community}/posts/index', 'App\Http\Controllers\PostController@index')->name("post.index");
 Route::get('/{community}/posts/show/{post}', 'App\Http\Controllers\PostController@show')->name("post.show");
 Route::post('/post/save', 'App\Http\Controllers\PostController@save')->name("post.save");
 Route::get('/{community}/posts/update/{post}', 'App\Http\Controllers\PostController@update')->name("post.update");
 Route::post('post/save_update', 'App\Http\Controllers\PostController@saveUpdate')->name("post.save_update");
 Route::post('post/delete', 'App\Http\Controllers\PostController@delete')->name("post.delete");
+//Communities
 Route::get('/communities/create', 'App\Http\Controllers\CommunityController@create')->name("community.create");
 Route::post('/communities/save', 'App\Http\Controllers\CommunityController@save')->name("community.save");
 Route::get('/communities/index', 'App\Http\Controllers\CommunityController@index')->name("community.index");
@@ -40,3 +41,11 @@ Route::get('/communities/update/{community}', 'App\Http\Controllers\CommunityCon
 Route::post('/communities/save_update/{community}', 'App\Http\Controllers\CommunityController@saveUpdate')->name("community.save_update");
 Route::delete('/communities/delete/{community}', 'App\Http\Controllers\CommunityController@delete')->name("community.delete");
 Route::post('/community/join', 'App\Http\Controllers\CommunityController@join')->name("community.join");
+//Announcement
+Route::get('/{community}/announcement/create', 'App\Http\Controllers\AnnouncementController@create')->name("announcement.create");
+Route::get('/{community}/announcements/index', 'App\Http\Controllers\AnnouncementController@index')->name("announcement.index");
+Route::get('/{community}/announcements/show/{announcement}', 'App\Http\Controllers\AnnouncementController@show')->name("announcement.show");
+Route::post('/announcement/save', 'App\Http\Controllers\AnnouncementController@save')->name("announcement.save");
+Route::get('/{community}/announcements/update/{announcement}', 'App\Http\Controllers\AnnouncementController@update')->name("announcement.update");
+Route::post('announcement/save_update', 'App\Http\Controllers\AnnouncementController@saveUpdate')->name("announcement.save_update");
+Route::post('announcement/delete', 'App\Http\Controllers\AnnouncementController@delete')->name("announcement.delete");

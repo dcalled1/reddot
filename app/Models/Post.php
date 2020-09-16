@@ -57,7 +57,7 @@ class Post extends Model
     }*/
 
     public function getCommunity() {
-        $this->attributes['community_id'];
+        return $this->attributes['community_id'];
     }
 
     public function author() {

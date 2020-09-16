@@ -9,8 +9,8 @@
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                Posts
-                <a href="{{ route('post.create', $data['community'] ) }}" class="ml-auto btn btn-primary">Create Post</a>
+                Announcement
+                <a href="{{ route('announcement.create', $data['community'] ) }}" class="ml-auto btn btn-primary">Create Announcement</a>
                 
                 </div>
 
@@ -26,9 +26,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data["post"] as $p)
+                                    @foreach ($data["announcement"] as $p)
                                             <tr>
-                                                <td><b><a href="{{ route('post.show', [$p->getCommunity(), $p->getId()]) }}">{{ $p->getTitle() }}</a></b></td>
+                                                <td><b><a href="{{ route('announcement.show', [$p->getCommunity(), $p->getId()]) }}">{{ $p->getTitle() }}</a></b></td>
                                                 <td>{{ $p->getTopics() }}</td>
                                                 <td>{{ $p->getTags() }}</td>
                                             </tr>

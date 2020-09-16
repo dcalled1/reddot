@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Announcement;
+use App\Models\Announcement;
 use Validator;
 
 class AnnouncementController extends Controller
 {
     //Create function
-    public function create()
+    public function create($community)
     {
         $data = []; 
         $data["title"] = "Create Announcement";
-
+        $data["community"] = $community;
         return view('announcement.create')->with("data",$data);
     }
 
@@ -21,17 +21,19 @@ class AnnouncementController extends Controller
     public function save(Request $request)
     {
         Announcement::validate($request);
-        Announcement::create($request->only(['author','community','content','tags','topics','erase']));
+        error_log($request['expire']);
+        Announcement::create($request->only(['title', 'author_id','community_id', 'content', 'tags', 'topics', 'expire']));
         $data = [];
         $data["success"] = 'Announcement created correctly!';
         return back()->with('data', $data);
     }
 
     //Update function
-    public function update()
+    public function update($community, $id)
     {
         $data = []; 
         $data["title"] = "Update Announcement";
+        $data['announcement'] = Announcement::findOrFail($id);
 
         return view('announcement.update')->with("data",$data);
     }
@@ -40,44 +42,47 @@ class AnnouncementController extends Controller
     public function saveUpdate(Request $request)
     {
         $announcement_id = $request['id'];
+        $title = $request['title'];
         $content = $request['content'];
         $tags = $request['tags'];
         $topics = $request['topics'];
-        $erase = $request['erase'];
+        $expire = $request['expire'];
         Announcement::validate($request);
-        Announcement::where('id', $announcement_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'erase' => $erase]);
+        Announcement::findOrFail($announcement_id)->update(['title' => $title, 'title' => $title, 'title' => $title, 'content' => $content, 'tags' => $tags, 'topics' => $topics, 'expire' => $expire]);
         $data = [];
         $data["success"] = 'Announcement updated correctly!';
         return back()->with('data', $data);
     }
 
     //List announcement
-    public function show()
+    public function index($community)
     {
         $data = [];
         $data["title"] = "Announcements Dashboard";
-        $data["announcement"] = Announcement::all();
-        return view('announcement.show')->with("data",$data);
+        $data["announcement"] = Announcement::all()->where('community_id', $community);
+        $data["community"] = $community;
+        return view('announcement.index')->with("data",$data);
     }
 
     //List specific id
-    public function showid($id)
+    public function show($community, $id)
     {
         $announcement = Announcement::findOrFail($id);
 
-        return view('announcement.showid')->with("announcement",$announcement);
+        return view('announcement.show')->with("announcement",$announcement);
     }
 
     //Delete announcement
     public function delete(Request $request)
     {;
-        $id = $request->only("id");
+        $id = $request['id'];
+        $community = Announcement::findOrFail($id)->getCommunity();
         $res=Announcement::where('id',$id)->delete();
         $data = [];
         $data["title"] = "Announcement Dashboard";
         $data["success"] = 'Announcement deleted correctly!';
         $data["announcement"] = Announcement::all();
-        return redirect('announcement/show')->with('data', $data);
+        return redirect()->route('announcement.index', $community)->with('data', $data);
     }
 
     //Likes

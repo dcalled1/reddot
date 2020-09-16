@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h1>Viviendas</h1>
+                <h1>Welcome To Our Forum!</h1>
             </div>
         </div>
     </div>
