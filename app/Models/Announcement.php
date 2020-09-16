@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Announcement extends Model
 {
@@ -22,9 +23,9 @@ class Announcement extends Model
     topics
     created
     */ 
-    protected $fillable = ['author', 'title', 'community','content','tags','topics','expire'];
+    protected $fillable = ['title', 'author_id', 'community_id','content','tags','topics', 'expire'];
 
-
+    
     //Metodos
 
     public static function validate(Request $request){
@@ -42,7 +43,7 @@ class Announcement extends Model
     {
         $this->attributes['id'] = $id;
     }
-
+    /*
     public function getLikes(){
         $this->attributes['likes'];
     }
@@ -50,27 +51,27 @@ class Announcement extends Model
     public function getDislikes(){
         $this->attributes['dislikes'];
     }
-
+    */
     public function getAuthor(){
-        $this->attributes['author'];
+        return $this->attributes['author_id'];
     }
 
     public function getCommunity(){
-        $this->attributes['community'];
+        return $this->attributes['community_id'];
     }
 
     public function author(){
         return $this->belongsTo(User::class, 'author_id');
     }
-
+    /*
     public function likes(){
         return $this->belongsToManny(User::class, 'user_likes_announcement');
     }
-
+    
     public function dislikes(){
         return $this->belongsToManny(User::class, 'user_dislikes_announcement');
     }
-
+    */
     public function community(){
         return $this->belongsTo(Community::class);
     }
@@ -93,6 +94,15 @@ class Announcement extends Model
         $this->attributes['tags'] = $tags;
     }
 
+    public function getTopics(){
+        return $this->attributes['topics'];
+    }
+
+    public function setTopics($topics)
+    {
+        $this->attributes['topics'] = $topics;
+    }
+
     public function getTitle(){
         return $this->attributes['title'];
     }
@@ -102,24 +112,11 @@ class Announcement extends Model
         $this->attributes['title'] = $title;
     }
 
-    public function getInteractions(){
-        return $this->attributes['interactions'];
-    }
-
-    public function setInteractions($likes, $dislikes)
-    {
-        $this->attributes['interactions'] = $likes + $dislikes;
-    }
-
     public function getExpire(){
         return $this->attributes['expire'];
     }
 
     public function setExpire($expire){
         $this->attributes['expire'] = $expire;
-    }
-
-    public function getCreated(){
-        return $this->attributes['created'];
     }
 }

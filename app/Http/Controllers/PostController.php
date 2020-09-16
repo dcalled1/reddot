@@ -74,17 +74,17 @@ class PostController extends Controller
     //Delete post
     public function delete(Request $request)
     {;  
-        error_log("entro");
-        $id = $request->only("id");
+        $id = $request["id"];
+        $community = Post::findOrFail($id)->getCommunity();
         $res=Post::where('id',$id)->delete();
         $data = [];
         $data["title"] = "Post Dashboard";
-        $data["success"] = 'Item deleted correctly!';
+        $data["success"] = 'Post deleted correctly!';
         $data["post"] = Post::all();
-        return redirect('post/show')->with('data', $data);
+        return redirect()->route('post.index', $community)->with('data', $data);
     }
 
-    //Likes
+    // Likes
     public function postLikePost(Request $request)
     {
         $post_id = $request['post_id'];
@@ -165,4 +165,5 @@ class PostController extends Controller
         }
         return null;
     }
+    
 }

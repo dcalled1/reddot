@@ -28,7 +28,7 @@
                                 <tbody>
                                     @foreach ($data["post"] as $p)
                                             <tr>
-                                                <td><b><a href="#">{{ $p->getTitle() }}</a></b></td>
+                                                <td><b><a href="{{ route('post.show', [$p->getCommunity(), $p->getId()]) }}">{{ $p->getTitle() }}</a></b></td>
                                                 <td>{{ $p->getTopics() }}</td>
                                                 <td>{{ $p->getTags() }}</td>
                                             </tr>
