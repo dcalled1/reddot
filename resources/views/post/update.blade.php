@@ -19,7 +19,7 @@
                 @endif
 
                 <!-- Create Post Form -->
-                <form method="POST" action="{{ route('post.save_update') }}">
+                <form method="POST" action="{{ route('community.save_update') }}">
                     <div class="form-group">
                         @csrf               
                         <input type="hidden" value="{{ $data['post']->getId() }}" name="id" />        

@@ -39,6 +39,7 @@ class CommunityController extends Controller
     {
         $data = [];
         $data['title'] = 'Update community';
+        $data['community'] = Community::findOrFail($id)->get();
 
         return view('community.update')->with('data', $data);
     }

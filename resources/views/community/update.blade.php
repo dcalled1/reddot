@@ -8,7 +8,7 @@
         <div class="col-md-12">
         @include('util.message')
             <div class="card">
-                <div class="card-header">Update Post</div>
+                <div class="card-header">Update Community</div>
                 <div class="card-body">
                 @if($errors->any())
                 <ul id="errors">
@@ -28,7 +28,7 @@
                         <label for="content">Description:</label>
                         <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['post']->getContent() }}</textarea>
                         <label for="topics">Topics:</label>
-                        <input type="text" name="topics" placeholder="Post Topics" value="{{ $data['communities']->getTopics() }}" class="form-control"/>
+                        <input type="text" name="topics" placeholder="Post Topics" value="{{ $data['community']->getTopics() }}" class="form-control"/>
                         <label for="preferredTags">Preferred Tags:</label>
                         <input type="text" name="preferredTags" value="{{ $data['community']->getPreferredTags() }}" class="form-control"/>
                         <input type="submit" value="Update" class="btn btn-primary mt-3"/>
