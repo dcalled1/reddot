@@ -29,10 +29,11 @@ class PostController extends Controller
     }
 
     //Update function
-    public function update()
+    public function update($community, $post)
     {
         $data = []; 
         $data["title"] = "Update Post";
+        $data['post'] = Post::findOrFail($post);
 
         return view('post.update')->with("data",$data);
     }
@@ -44,9 +45,9 @@ class PostController extends Controller
         $content = $request['content'];
         $tags = $request['tags'];
         $topics = $request['topics'];
-        $erase = $request['erase'];
+        $title = $request['title'];
         Post::validate($request);
-        Post::where('id', $post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'erase' => $erase]);
+        Post::where('id', $post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'title' => $title]);
         $data = [];
         $data["success"] = 'Post updated correctly!';
         return back()->with('data', $data);
@@ -63,11 +64,11 @@ class PostController extends Controller
     }
 
     //List specific id
-    public function show($post)
+    public function show($community, $post)
     {
-        $post = Post::findOrFail($id);
-
-        return view('post.showid')->with("post",$post);
+        $postob = Post::findOrFail($post);
+        error_log($postob['author']);
+        return view('post.show')->with("post",$postob);
     }
 
     //Delete post

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             //$table->integer('like_id');
             //$table->integer('dislike_id');
             $table->foreignId('community_id')->constrained('communities');
-            $table->string('content');
+            $table->mediumtext('content');
             $table->string('tags')->nullable();
             $table->string('topics')->nullable();
             $table->integer('interactions');
