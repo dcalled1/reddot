@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section("title", $community['title'])
+@section("title", $community->getName())
 
 @section('content')
 <div class="container">
@@ -9,19 +9,22 @@
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                @if (Auth::user()->id == $community['admin_id'])
+                @if (Auth::user()->id == $community->admin->getId())
                     <div class="ml-auto row">
                         <form method="POST" action="{{ route('community.delete') }}" class="mr-2">
-                            <input type="hidden" value="{{ $community['id'] }}" name="id" />
+                            <input type="hidden" value="{{ $community->getId() }}" name="id" />
                             <input type="submit" value="Delete Community" class="btn btn-danger">
                         </form>
-                        <a href="{{ route('community.update', $community['id']) }}" class="btn btn-primary">Update Community</a>
+                        <a href="{{ route('community.update', $community->getId()) }}" class="btn btn-primary">Update Community</a>
                     </div>
                 @endif
                 </div>
 
                 <div class="card-body">
-                    <a href="{{ route('community.join', $community['id']) }}" class="ml-auto btn btn-primary">Join Community</a>
+                    <form action="{{ route('community.join', $community->getId()) }}" method="post">
+                        @csrf
+                        <input type="text" hidden name = "community_id" value="{{ community->getId() }}"/>
+                    </form>
                     <div class="row">
                         <div class="col-12">
                             <h1 class="text-center">{{ $community['name'] }}</h1>
