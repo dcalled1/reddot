@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->attributes['id'];
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     public function memberCommunities() {
         return $this->belongsToMany(Community::class, 'user_member_community');
     }

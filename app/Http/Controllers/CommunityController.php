@@ -14,7 +14,6 @@ class CommunityController extends Controller
     {
         $data = [];
         $data['title'] = "Create community";
-        $data['community'] = $community;
 
         return view('community.create')->with('data', $data);
     }
@@ -77,37 +76,37 @@ class CommunityController extends Controller
     {
         $community = Community::findOrFail($id);
 
-        return view('community.show')->with('data', $data);
+        return view('community.show')->with('community', $community);
     }
 
 
     //Delete
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $community = Community::where('id', $id)->delete();
-
-        if ($community == null)
-        {
-            return redirect()->route('community.index');
-        }
+        $id = $request["id"];
+        $res=Community::findOrFail($id)->delete();
+        
+        $data = [];
+        $data["title"] = "Communities";
+        $data["success"] = 'Community deleted successfully!';
 
         return redirect()->route('community.index');
     }
 
     
     //Join community
-    public function join($id)
+    public function join(Request $request)
     {
         $user = Auth::user();
+        $id = $request['community_id'];
 
-        $data = [];
-        $data['success'] = 'Community joined successfully!';
-        
-        $community = Community::where('id', $id)->get();
+        $community = Community::findOrFail($id);
         
         $community->addMember($user);
 
-        return back()->with('data', $data);
+        error_log($community);
+
+        return back()->with('community', $community);
     }
 
 }

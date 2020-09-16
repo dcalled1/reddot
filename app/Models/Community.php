@@ -9,10 +9,62 @@ use Illuminate\Http\Request;
 class Community extends Model {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'topics', 'preferredTags', 'admin_id'];
+
     public static function validate(Request $request) {
         $request->validate([
             //Validators
         ]);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->$name = $name;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->$description=$description;
+    }
+
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+
+    public function setTopics($topics)
+    {
+        $this->$topics=$topics;
+    }
+
+    public function getPreferredTags()
+    {
+        return $this->preferredTags;
+    }
+
+    public function setPreferredTags($preferredTags)
+    {
+        $this->$preferredTags=$preferredTags;
+    }
+
+    public function getAdminId()
+    {
+        return $this->admin_id;
     }
 
     public function members() {

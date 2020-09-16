@@ -39,8 +39,8 @@ Route::get('/communities/index', 'App\Http\Controllers\CommunityController@index
 Route::get('/communities/show/{community}', 'App\Http\Controllers\CommunityController@show')->name("community.show");
 Route::get('/communities/update/{community}', 'App\Http\Controllers\CommunityController@update')->name("community.update");
 Route::post('/communities/save_update/{community}', 'App\Http\Controllers\CommunityController@saveUpdate')->name("community.save_update");
-Route::delete('/communities/delete/{community}', 'App\Http\Controllers\CommunityController@delete')->name("community.delete");
-Route::post('/communities/{community}/join', 'App\Http\Controllers\CommunityController@join')->name("community.join");
+Route::delete('/communities/delete/', 'App\Http\Controllers\CommunityController@delete')->name("community.delete");
+Route::post('/community/join', 'App\Http\Controllers\CommunityController@join')->name("community.join");
 //Announcement
 Route::get('/{community}/announcements/create', 'App\Http\Controllers\AnnouncementController@create')->name("announcement.create");
 Route::get('/{community}/announcements/index', 'App\Http\Controllers\AnnouncementController@index')->name("announcement.index");
