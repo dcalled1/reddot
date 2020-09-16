@@ -17,7 +17,9 @@
                             <button class="btn btn-primary" type="submit">Join Community</button>
                         </form>
                         <form method="POST" action="{{ route('community.delete') }}" class="mr-2">
-                            <input type="hidden" value="{{ $community->getId() }}" name="id" />
+                            @csrf
+                            @method('DELETE')
+                            <input type="text" hidden value="{{ $community->getId() }}" name="id" />
                             <input type="submit" value="Delete Community" class="btn btn-danger">
                         </form>
                         <a href="{{ route('community.update', $community->getId()) }}" class="btn btn-primary">Update Community</a>

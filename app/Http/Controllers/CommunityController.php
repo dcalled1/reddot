@@ -84,7 +84,7 @@ class CommunityController extends Controller
     public function delete(Request $request)
     {
         $id = $request["id"];
-        $res=Community::where('id', $id)->delete();
+        $res=Community::findOrFail($id)->delete();
         
         $data = [];
         $data["title"] = "Communities";
