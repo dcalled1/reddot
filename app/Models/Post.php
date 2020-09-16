@@ -123,4 +123,8 @@ class Post extends Model
     public function getCreated() {
         return $this->attributes['created'];
     }
+
+    public function countPosts() {
+        return count($this->community);
+    }
 }

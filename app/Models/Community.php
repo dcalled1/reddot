@@ -109,4 +109,8 @@ class Community extends Model {
     public function announcements() {
         return $this->hasMany(Announcement::class, 'community_id');
     }
+
+    public function countPosts(){
+        return count($this->posts);
+    }
 }
