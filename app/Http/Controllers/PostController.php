@@ -41,13 +41,14 @@ class PostController extends Controller
     //Save Update Function
     public function saveUpdate(Request $request)
     {
+        
         $post_id = $request['id'];
         $content = $request['content'];
         $tags = $request['tags'];
         $topics = $request['topics'];
         $title = $request['title'];
         Post::validate($request);
-        Post::where('id', $post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'title' => $title]);
+        Post::findOrFail($post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'title' => $title]);
         $data = [];
         $data["success"] = 'Post updated correctly!';
         return back()->with('data', $data);
@@ -67,13 +68,13 @@ class PostController extends Controller
     public function show($community, $post)
     {
         $postob = Post::findOrFail($post);
-        error_log($postob['author']);
         return view('post.show')->with("post",$postob);
     }
 
     //Delete post
     public function delete(Request $request)
-    {;
+    {;  
+        error_log("entro");
         $id = $request->only("id");
         $res=Post::where('id',$id)->delete();
         $data = [];

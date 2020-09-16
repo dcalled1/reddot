@@ -11,8 +11,8 @@
                 <div class="card-header d-flex">
                 @if (Auth::user()->id == $post['author_id'])
                     <div class="ml-auto row">
-                        <form action="POST" class="mr-2">
-                        @method('DELETE')
+                        <form method="POST" action="{{ route('post.delete') }}" class="mr-2">
+                            <input type="hidden" value="{{ $post['id'] }}" name="id" />
                             <input type="submit" value="Delete Post" class="btn btn-danger">
                         </form>
                         <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">Update Post</a>

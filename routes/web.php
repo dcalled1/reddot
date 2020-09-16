@@ -30,8 +30,8 @@ Route::get('/{community}/posts/index', 'App\Http\Controllers\PostController@inde
 Route::get('/{community}/posts/show/{post}', 'App\Http\Controllers\PostController@show')->name("post.show");
 Route::post('/post/save', 'App\Http\Controllers\PostController@save')->name("post.save");
 Route::get('/{community}/posts/update/{post}', 'App\Http\Controllers\PostController@update')->name("post.update");
-Route::post('/{community}/posts/save_update/{post}', 'App\Http\Controllers\PostController@saveUpdate')->name("post.save_update");
-Route::delete('/{community}/posts/delete/{post}', 'App\Http\Controllers\PostController@delete')->name("post.delete");
+Route::post('post/save_update', 'App\Http\Controllers\PostController@saveUpdate')->name("post.save_update");
+Route::post('post/delete', 'App\Http\Controllers\PostController@delete')->name("post.delete");
 Route::get('/communities/create', 'App\Http\Controllers\CommunityController@create')->name("community.create");
 Route::post('/communities/save', 'App\Http\Controllers\CommunityController@save')->name("community.save");
 Route::get('/communities/index', 'App\Http\Controllers\CommunityController@index')->name("community.index");

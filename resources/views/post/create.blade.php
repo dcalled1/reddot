@@ -27,7 +27,7 @@
                         <input type="hidden" value="{{ Auth::user()->id }}" name="author_id" />
                         <input type="hidden"  value="{{ $data['community'] }}" name="community_id" />
                         <label for="content">Content:</label>
-                        <textarea name="content" class="form-control" value="{{ old('content') }}" rows="20" cols="30">Post Content</textarea>
+                        <textarea name="content" class="form-control" rows="20" cols="30"></textarea>
                         <label for="tags">Tags:</label>
                         <input type="text" name="tags" value="{{ old('tags') }}" class="form-control"/>
                         <label for="topics">Topics:</label>
