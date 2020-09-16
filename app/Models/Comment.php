@@ -13,14 +13,14 @@ class Comment extends Model
 
     //Attributes id, author, likes, dislikes, father, post, comments, content, level, history, created_at, updated_at
     protected $fillable = [
-        'author',
-        'likes',
-        'dislikes',
-        'father',
-        'post',
-        'comments',
+        'author_id',
+        //'likes',
+        //'dislikes',
+        //'father',
+        //'post',
+        //'comments',
         'content',
-        'level',
+        //'level',
         'post_id'
     ];
 
@@ -32,12 +32,12 @@ class Comment extends Model
 
     public function getAuthor()
     {
-        return $this->author;
+        return $this->author_id;
     }
 
-    public function setAuthor($author)
+    public function setAuthor($author_id)
     {
-        $this->author = $author;
+        $this->author_id = $author_id;
     }
 
     public function getLikes()
