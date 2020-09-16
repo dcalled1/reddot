@@ -23,10 +23,10 @@
                     <div class="form-group">
                         @csrf               
                         <input type="hidden" value="{{ $data['community']->getId() }}" name="id" />        
-                        <label for="title">Name:</label>
-                        <input type="text" placeholder="Title of the post" name="title" class="form-control" value="{{ $data['community']->getName() }}" />
-                        <label for="content">Description:</label>
-                        <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['post']->getContent() }}</textarea>
+                        <label for="name">Name:</label>
+                        <input type="text" placeholder="Name of the community" name="name" class="form-control" value="{{ $data['community']->getName() }}" />
+                        <label for="description">Description:</label>
+                        <textarea name="description" class="form-control" rows="5" cols="30">{{ $data['community']->getDescription() }}</textarea>
                         <label for="topics">Topics:</label>
                         <input type="text" name="topics" placeholder="Post Topics" value="{{ $data['community']->getTopics() }}" class="form-control"/>
                         <label for="preferredTags">Preferred Tags:</label>

@@ -35,11 +35,11 @@ class CommunityController extends Controller
     }
 
     //Update
-    public function update()
+    public function update($id)
     {
         $data = [];
         $data['title'] = 'Update community';
-        $data['community'] = Community::findOrFail($id)->get();
+        $data['community'] = Community::findOrFail($id);
 
         return view('community.update')->with('data', $data);
     }
@@ -56,6 +56,9 @@ class CommunityController extends Controller
 
         $data = [];
         $data['success'] = "Community updated successfully!";
+
+        Community::validate($request);
+        Community::findOrFail($id)->update(['name' => $name, 'description' => $description, 'topics' => $topics, 'preferredTags' => $preferredTags]);
 
         return back()->with('data', $data);
     }
