@@ -101,7 +101,7 @@ class CommunityController extends Controller
         $user = Auth::user();
         $id = $request['community_id'];
 
-        $community = Community::findorfail($id);
+        $community = Community::findOrFail($id);
         
         $community->addMember($user);
 
