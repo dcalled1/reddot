@@ -39,8 +39,8 @@
                                 <h6 class="ml-2">Prefered Tags: {{ $community['preferredTags'] }}</h6><br>
                                 <h6>Members</h6>
                                 <ul>
-                                    @foreach ($community->members as $m)
-                                        <li>$m->getEmail()</li>
+                                    @foreach ($community->members as $member)
+                                        <li>{{ $member->getEmail() }}</li>
                                     @endforeach
                                 </ul>
                             </div>

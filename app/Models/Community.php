@@ -82,7 +82,12 @@ class Community extends Model {
     }
 
     public function isMember(User $user) {
-        return in_array($user, $this->members);
+        foreach($this->members as $member) {
+            if($member->getId() == $user->getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*public function admins() {
