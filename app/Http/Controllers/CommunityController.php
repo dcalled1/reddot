@@ -14,7 +14,6 @@ class CommunityController extends Controller
     {
         $data = [];
         $data['title'] = "Create community";
-        $data['community'] = $community;
 
         return view('community.create')->with('data', $data);
     }
