@@ -24,7 +24,6 @@ class CommentController extends Controller
     {
         $post = $request['post_id'];
         $community_id = $request['community_id'];
-        error_log($community_id);
         Comment::create($request->only(['content', 'author_id', 'post_id']));
         $data = [];
         $data["community"] = $community_id;
@@ -53,7 +52,6 @@ class CommentController extends Controller
         $content = $request['content'];
         $post_id = $request['post_id'];
         $community_id = $request['community_id'];
-        error_log($comment_id);
         Comment::findOrFail($comment_id)->update(['content' => $content]);
         $data["success"] = 'Comment updated correctly!';
         return redirect()->route('post.show', [$community_id, $post_id])->with('data', $data);
@@ -67,7 +65,7 @@ class CommentController extends Controller
         $post_id = $request["post_id"];
         $res=Comment::where('id',$id)->delete();
         $data = [];
-        return redirect()->route('post.show', [$community, $post])->with('data', $data);
+        return redirect()->route('post.show', [$community_id, $post_id])->with('data', $data);
     }
 
 }
