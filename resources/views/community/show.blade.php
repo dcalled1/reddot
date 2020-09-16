@@ -11,6 +11,11 @@
                 <div class="card-header d-flex">
                 @if (Auth::user()->id == $community->admin->getId())
                     <div class="ml-auto row">
+                        <form action="{{ route('community.join') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="community_id" value="{{ $community->getId() }}"/>
+                            <button class="btn btn-primary" type="submit">Join Community</button>
+                        </form>
                         <form method="POST" action="{{ route('community.delete') }}" class="mr-2">
                             <input type="hidden" value="{{ $community->getId() }}" name="id" />
                             <input type="submit" value="Delete Community" class="btn btn-danger">
@@ -21,11 +26,6 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('community.join') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="community_id" value="{{ $community->getId() }}"/>
-                        <button class="btn btn-primary" type="submit">Join</button>
-                    </form>
                     <div class="row">
                         <div class="col-12">
                             <h1 class="text-center">{{ $community['name'] }}</h1>
