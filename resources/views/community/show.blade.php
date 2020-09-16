@@ -33,17 +33,15 @@
                             <h1 class="text-center">{{ $community['name'] }}</h1>
                             <h4 class="text-center">Admin: {{ $community->admin->getEmail() }}</h3>
                             <br>
-                            <p class="test-justify"> {{ $community['description'] }}</p>
-                            <div class="d-flex">
-                                <h6>Topics: {{ $community['topics'] }}</h6><br>
-                                <h6 class="ml-2">Prefered Tags: {{ $community['preferredTags'] }}</h6><br>
-                                <h6>Members</h6>
-                                <ul>
-                                    @foreach ($community->members as $member)
-                                        <li>{{ $member->getEmail() }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                            <p class="ml-2">Description: {{ $community['description'] }}</p>
+                            <p class="ml-2">Topics: {{ $community['topics'] }}</h6><br>
+                            <p class="ml-2">Prefered Tags: {{ $community['preferredTags'] }}</p><br>
+                            <h6>Members</h6>
+                            <ul>
+                                @foreach ($community->members as $member)
+                                    <li>{{ $member->getEmail() }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
