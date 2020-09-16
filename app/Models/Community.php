@@ -17,6 +17,20 @@ class Community extends Model {
         return $this->belongsToMany(User::class, 'user_member_community');
     }
 
+    public function countMembers() {
+        return count($this->members);
+    }
+
+    public function addMember(User $user) {
+        if(!$this->isMember($user)) {
+            $this->members()->attach($user->getId());
+        }
+    }
+
+    public function isMember(User $user) {
+        return in_array($user, $this->members);
+    }
+
     /*public function admins() {
         return $this->belongsToMany(User::class, 'user_admin_community');
     }
