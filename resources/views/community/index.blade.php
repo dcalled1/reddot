@@ -20,17 +20,23 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
                                         <th>Topics</th>
-                                        <th>Tags</th>
+                                        <th>Preferred Tags</th>
+                                        <th>Administrator</th>
+                                        <th># of Members</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data["post"] as $p)
+                                    @foreach ($data["communities"] as $c)
                                             <tr>
-                                                <td><b><a href="#">{{ $p->getTitle() }}</a></b></td>
-                                                <td>{{ $p->getTopics() }}</td>
-                                                <td>{{ $p->getTags() }}</td>
+                                                <td><b><a href="{{ route('community.show', $c->getId()) }}">{{ $c->getName() }}</a></b></td>
+                                                <td>{{ $c->getDescription() }}</td>
+                                                <td>{{ $c->getTopics() }}</td>
+                                                <td>{{ $c->getPreferredTags() }}</td>
+                                                <td>{{ $c->admin->getEmail() }}</td>
+                                                <td>{{ $c->countMembers() }} members</td>
                                             </tr>
                                     @endforeach
                                 </tbody>

@@ -39,4 +39,4 @@ Route::get('/communities/show/{community}', 'App\Http\Controllers\CommunityContr
 Route::get('/communities/update/{community}', 'App\Http\Controllers\CommunityController@update')->name("community.update");
 Route::post('/communities/save_update/{community}', 'App\Http\Controllers\CommunityController@saveUpdate')->name("community.save_update");
 Route::delete('/communities/delete/{community}', 'App\Http\Controllers\CommunityController@delete')->name("community.delete");
-Route::post('/communities/{community}/join', 'App\Http\Controllers\CommunityController@join')->name("community.join");
+Route::post('/community/join', 'App\Http\Controllers\CommunityController@join')->name("community.join");
