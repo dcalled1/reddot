@@ -96,12 +96,18 @@ class CommunityController extends Controller
 
     
     //Join community
-    public function join(Request $request)
+    public function join($id)
     {
         $user = Auth::user();
 
         $data = [];
         $data['success'] = 'Community joined successfully!';
+        
+        $community = Community::where('id', $id)->get();
+        
+        $community->addMember($user);
+
+        return back()->with('data', $data);
     }
 
 }
