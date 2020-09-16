@@ -21,20 +21,37 @@ class CommunityController extends Controller
     //Save
     public function save(Request $request)
     {
+        Community::validate($request);
+        Community::create($request->only(['name',
+                                          'description',
+                                          'topics',
+                                          'preferredTags',
+                                          'admin_id']));
 
+        $data = [];
+        $data['success'] = 'Community created successfully!';
+
+        return back()->with('data', $data);
     }
 
     //Update
     public function update()
     {
+        $data = [];
+        $data['title'] = 'Update community';
 
+        return view('community.update')->with('data', $data);
     }
 
 
     //Save update
     public function saveUpdate(Request $request)
     {
-
+        $ = $request[''];
+        $ = $request[''];
+        $ = $request[''];
+        $ = $request[''];
+        $ = $request[''];
     }
 
 
@@ -59,7 +76,7 @@ class CommunityController extends Controller
     }
 
     
-    //Add member
+    //Join community
     public function join(Request $request)
     {
 
