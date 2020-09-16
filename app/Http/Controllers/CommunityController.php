@@ -81,14 +81,14 @@ class CommunityController extends Controller
 
 
     //Delete
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $community = Community::where('id', $id)->delete();
-
-        if ($community == null)
-        {
-            return redirect()->route('community.index');
-        }
+        $id = $request["id"];
+        $res=Community::where('id', $id)->delete();
+        
+        $data = [];
+        $data["title"] = "Communities";
+        $data["success"] = 'Community deleted successfully!';
 
         return redirect()->route('community.index');
     }
