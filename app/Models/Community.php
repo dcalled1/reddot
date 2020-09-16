@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Community extends Model {
     use HasFactory;
 
-
-
-
-
+    public static function validate(Request $request) {
+        $request->validate([
+            //Validators
+        ]);
+    }
 
     public function members() {
         return $this->belongsToMany(User::class, 'user_member_community');

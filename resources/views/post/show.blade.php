@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section("title", $data["title"])
+@section("title", $post['title'])
 
 @section('content')
 <div class="container">
@@ -9,15 +9,31 @@
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                Posts
-                <a href="#" class="ml-auto btn btn-danger">Delete Post</a>
-                <a href="#" class="ml-auto btn btn-primary">Update Post</a>
+                @if (Auth::user()->id == $post['author_id'])
+                    <div class="ml-auto row">
+                        <form method="POST" action="{{ route('post.delete') }}" class="mr-2">
+                            <input type="hidden" value="{{ $post['id'] }}" name="id" />
+                            <input type="submit" value="Delete Post" class="btn btn-danger">
+                        </form>
+                        <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">Update Post</a>
+                    </div>
+                @endif
                 </div>
 
                 <div class="card-body">
                     <div class="row">
-                        <h1>{{ $post['title'] }}</h1>
-                        <p> {{ $post['content'] }}</p>
+                        <div class="col-12">
+                            <h1 class="text-center">{{ $post['title'] }}</h1>
+                            <h4 class="text-center">Author: {{ $post['author']->name }}</h3>
+                            <br>
+                            <p class="test-justify"> {{ $post['content'] }}</p>
+                            <div class="d-flex">
+                                <div class="row ml-auto mt-5">
+                                    <h6>Tags: {{ $post['tags'] }}</h6>
+                                    <h6 class="ml-2">Topics: {{ $post['topics'] }}</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

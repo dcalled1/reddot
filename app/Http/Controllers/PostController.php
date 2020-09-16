@@ -29,10 +29,11 @@ class PostController extends Controller
     }
 
     //Update function
-    public function update()
+    public function update($community, $post)
     {
         $data = []; 
         $data["title"] = "Update Post";
+        $data['post'] = Post::findOrFail($post);
 
         return view('post.update')->with("data",$data);
     }
@@ -40,13 +41,14 @@ class PostController extends Controller
     //Save Update Function
     public function saveUpdate(Request $request)
     {
+        
         $post_id = $request['id'];
         $content = $request['content'];
         $tags = $request['tags'];
         $topics = $request['topics'];
-        $erase = $request['erase'];
+        $title = $request['title'];
         Post::validate($request);
-        Post::where('id', $post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'erase' => $erase]);
+        Post::findOrFail($post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'title' => $title]);
         $data = [];
         $data["success"] = 'Post updated correctly!';
         return back()->with('data', $data);
@@ -63,16 +65,16 @@ class PostController extends Controller
     }
 
     //List specific id
-    public function show($post)
+    public function show($community, $post)
     {
-        $post = Post::findOrFail($id);
-
-        return view('post.showid')->with("post",$post);
+        $postob = Post::findOrFail($post);
+        return view('post.show')->with("post",$postob);
     }
 
     //Delete post
     public function delete(Request $request)
-    {;
+    {;  
+        error_log("entro");
         $id = $request->only("id");
         $res=Post::where('id',$id)->delete();
         $data = [];
