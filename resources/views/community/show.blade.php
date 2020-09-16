@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <form action="{{ route('community.join', $community->getId()) }}" method="POST">
                         @csrf
-                        <input type="text" hidden name = "community_id" value="{{ community->getId() }}"/>
+                        <input type="text" hidden name="community_id" value="{{ community->getId() }}"/>
                         <button class="btn btn-primary" type="submit">Join</button>
                     </form>
                     <div class="row">
