@@ -19,23 +19,50 @@ class CommunityController extends Controller
     }
 
     //Save
+    public function save(Request $request)
+    {
 
+    }
 
     //Update
+    public function update()
+    {
+
+    }
 
 
     //Save update
+    public function saveUpdate(Request $request)
+    {
+
+    }
 
 
     //List
+    public function index()
+    {
+
+    }
 
 
     //Show
+    public function show($id)
+    {
+
+    }
 
 
     //Delete
+    public function delete(Request $request)
+    {
+
+    }
 
     
     //Add member
+    public function join(Request $request)
+    {
+
+    }
 
 }
