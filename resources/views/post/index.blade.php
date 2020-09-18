@@ -9,7 +9,7 @@
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                Posts in this community: {{ $data["post"]->first()->community->countPosts() }}
+                Posts in this community: @if ($data["post"]->first()) {{ $data["post"]->first()->community->countPosts() }} @else 0 @endif
                 <a href="{{ route('post.create', $data['community'] ) }}" class="ml-auto btn btn-primary">Create Post</a>
                 
                 </div>
