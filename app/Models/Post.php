@@ -34,7 +34,10 @@ class Post extends Model
 
     public static function validate(Request $request) {
         $request->validate([
-            //validators
+            "title" => "required",
+            "content" => "required",
+            "tags" => "required",
+            "topics"  => "required"
         ]);
     }
 

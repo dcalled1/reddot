@@ -30,7 +30,11 @@ class Announcement extends Model
 
     public static function validate(Request $request){
         $request->validate([
-            //"valor" => "integer|gt:0",
+            "title" => "required",
+            "content" => "required",
+            "tags" => "required",
+            "topics"  => "required",
+            "expire" => "required"
         ]);
     }
 

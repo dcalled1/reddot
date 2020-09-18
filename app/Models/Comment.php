@@ -24,6 +24,12 @@ class Comment extends Model
         'post_id'
     ];
 
+    public static function validate(Request $request) {
+        $request->validate([
+            "content" => "required",
+        ]);
+    }
+
     //Getters and setters
     public function getId()
     {

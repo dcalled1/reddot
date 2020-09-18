@@ -13,9 +13,13 @@ class Community extends Model {
 
     public static function validate(Request $request) {
         $request->validate([
-            //Validators
+            "name" => "required",
+            "description" => "required",
+            "topics" => "required",
+            "preferredTags"  => "required"
         ]);
     }
+
 
     public function getId()
     {
