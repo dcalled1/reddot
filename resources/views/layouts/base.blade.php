@@ -11,7 +11,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm text-uppercase">
             <div class="container">
-                <a class="navbar-brand color-white" href="/">
+                <a class="navbar-brand color-white" href="{{ route('home.index') }}">
                     Inicio
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,8 +35,8 @@
                                 </a>
                             </form>
                         @else
-                            <a class="navbar-brand color-white" href="/login">Login</a>
-                            <a class="navbar-brand color-white" href="/register">Register</a>
+                            <a class="navbar-brand color-white" href="{{ route('login') }}">Login</a>
+                            <a class="navbar-brand color-white" href="{{ route('register') }}">Register</a>
                         @endif
                     </ul>
                 </div>
