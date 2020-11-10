@@ -11,14 +11,14 @@
                 <div class="card-header d-flex">
                     <nav aria-label="breadcrumb mr-auto">
                         <ol class="breadcrumb bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
                             <!--li class="breadcrumb-item"><a href="{{ route('community.index') }}">Library</a></li-->
-                            <li class="breadcrumb-item active" aria-current="page">Communities</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('Communities') }}</li>
                         </ol>
                     </nav>
-                    <p class="mx-auto text-center">Communities</p>
+                    <p class="mx-auto text-center">{{ __('Communities') }}</p>
                     <div class="ml-auto">
-                        <a href="{{ route('community.create') }}" class="btn btn-primary text-center">Create Community</a>
+                        <a href="{{ route('community.create') }}" class="btn btn-primary text-center">{{ __('Create Community') }}</a>
                     </div>                                 
                 </div>
 
@@ -28,10 +28,10 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th># of Members</th>
-                                        <th>Announcements</th>
-                                        <th>Posts</th>
+                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('# of Members') }}</th>
+                                        <th>{{ __('Announcements') }}</th>
+                                        <th>{{ __('Posts') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,8 +39,8 @@
                                             <tr>
                                                 <td><b><a href="{{ route('community.show', $c->getId()) }}">{{ $c->getName() }}</a></b></td>
                                                 <td>{{ $c->countMembers() }}</td>
-                                                <td><a href="{{ route('announcement.index', $c->getId()) }}">Click Here</a></td>
-                                                <td><a href="{{ route('post.index', $c->getId()) }}">Click Here</a></td>
+                                                <td><a href="{{ route('announcement.index', $c->getId()) }}">{{ __('Click Here') }}</a></td>
+                                                <td><a href="{{ route('post.index', $c->getId()) }}">{{ __('Click Here') }}</a></td>
                                             </tr>
                                     @endforeach
                                 </tbody>

@@ -11,10 +11,10 @@
                 <div class="card-header d-flex">
                     <nav aria-label="breadcrumb mr-auto">
                         <ol class="breadcrumb bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">{{ __('Communities') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('community.show', $announcement['community_id'] ) }}">{{ $announcement->community()->get()[0]->name }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('announcement.index', $announcement['community_id']) }}">Announcements</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('announcement.index', $announcement['community_id']) }}">{{ __('Announcements') }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $announcement->getTitle() }}</li>
                         </ol>
                     </nav>
@@ -29,7 +29,7 @@
                                 </form>
                             </div>
                             <div class="div">
-                            <a href="{{ route('announcement.update', [$announcement['community_id'], $announcement['id']] ) }}" class="btn btn-primary">Update Announcement</a>
+                            <a href="{{ route('announcement.update', [$announcement['community_id'], $announcement['id']] ) }}" class="btn btn-primary">{{ __('Update Announcement') }}</a>
                             </div>
                         </div>
                     @endif
@@ -40,13 +40,13 @@
                     <div class="row">
                         <div class="col-12">
                             <h1 class="text-center">{{ $announcement['title'] }}</h1>
-                            <h4 class="text-center">Author: {{ $announcement['author']->name }}</h3>
+                            <h4 class="text-center">{{ __('Author') }}: {{ $announcement['author']->name }}</h3>
                             <br>
                             <p class="test-justify"> {{ $announcement['content'] }}</p>
                             <div class="d-flex">
                                 <div class="row ml-auto mt-5">
-                                    <h6>Tags: {{ $announcement['tags'] }}</h6>
-                                    <h6 class="ml-2">Topics: {{ $announcement['topics'] }}</h6>
+                                    <h6>{{ __('Tags') }}: {{ $announcement['tags'] }}</h6>
+                                    <h6 class="ml-2">{{ __('Topics') }}: {{ $announcement['topics'] }}</h6>
                                 </div>
                             </div>
                         </div>

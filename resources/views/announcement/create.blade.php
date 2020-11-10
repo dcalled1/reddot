@@ -38,13 +38,13 @@
                         <input type="hidden"  value="{{ $data['community']->id }}" name="community_id" />
                         <label for="content">{{ __('Content') }}</label>
                         <textarea name="content" class="form-control" rows="20" cols="30"></textarea>
-                        <label for="tags">{{ __('Tags:') }}</label>
+                        <label for="tags">{{ __('Tags') }}:</label>
                         <input type="text" name="tags" value="{{ old('tags') }}" class="form-control"/>
-                        <label for="topics">{{ __('Topics:') }}</label>
+                        <label for="topics">{{ __('Topics') }}:</label>
                         <input type="text" name="topics" placeholder="Announcement Topics" value="{{ old('topics') }}" class="form-control"/>
-                        <label for="expire">{{ __('Expiration Date:') }}</label>
+                        <label for="expire">{{ __('Expiration Date'): }}</label>
                         <input type="date" name="expire" value="{{ old('topics') }}" class="form-control"/>
-                        <input type="submit" value="Create" class="btn btn-primary mt-3"/>
+                        <input type="submit" value="{{ __('Create') }}" class="btn btn-primary mt-3"/>
 
                     </div>
                 </form>
