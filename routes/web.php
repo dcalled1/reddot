@@ -55,3 +55,6 @@ Route::get('/{community}/{post}/comments/update/{comment}', 'App\Http\Controller
 Route::post('/comment/save', 'App\Http\Controllers\CommentController@save')->name("comment.save");
 Route::post('/comment/update', 'App\Http\Controllers\CommentController@saveUpdate')->name("comment.save_update");
 Route::post('/comment/delete', 'App\Http\Controllers\CommentController@delete')->name("comment.delete");
+
+//Lang
+Route::get('/{lang}', 'App\Http\Controllers\LangController@changeLang');

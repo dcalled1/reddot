@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>@yield('title','Home Page')</title>
+    <title>@yield('title', __('Home Page'))</title>
     <!-- Styles -->   
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -12,7 +12,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm text-uppercase">
             <div class="container">
                 <a class="navbar-brand color-white" href="{{ route('home.index') }}">
-                    Inicio
+                    {{ __('Home') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="navbar-brand color-white" href="{{ route('community.index') }}">Communities</a>
+                        <a class="navbar-brand color-white" href="{{ route('community.index') }}">{{ __('Communities') }}</a>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
@@ -35,8 +35,8 @@
                                 </a>
                             </form>
                         @else
-                            <a class="navbar-brand color-white" href="{{ route('login') }}">Login</a>
-                            <a class="navbar-brand color-white" href="{{ route('register') }}">Register</a>
+                            <a class="navbar-brand color-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="navbar-brand color-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     </ul>
                 </div>
@@ -50,6 +50,21 @@
                 <li></li>
                 <li></li>
             </ul>
+        </div>
+
+        <div>
+        <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre >
+                                {{ __('Language') }} <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @inject('langChanger', 'App\Http\Controllers\LangController')
+                                <a class="dropdown-item" href="{{ $langChanger::changeLang('en') }}"><img src="{{asset('img/en.png')}}" width="30px" height="20x"> English</a>
+                                <a class="dropdown-item" href="{{ $langChanger::changeLang('es') }}"><img src="{{asset('img/es.png')}}" width="30px" height="20x"> Español</a>
+                            </div>
+                        </li>
+                    </ul>
         </div>
 
         <main class="py-4">
@@ -82,18 +97,18 @@
     <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Sites</h5>
+        <h5 class="text-uppercase">{{ __('Sites') }}</h5>
 
         <ul class="list-unstyled">
         <li>
             <u>
-            <a href="{{ route('home.index') }}" class="text-white">Home</a>
+            <a href="{{ route('home.index') }}" class="text-white">{{ __('Home') }}</a>
         </li>
         <li>
-            <a href="#!" class="text-white">Communities</a>
+            <a href="#!" class="text-white">{{ __('Comunidades') }}</a>
         </li>
         <li>
-            <a href="#!" class="text-white">Contact Us</a>
+            <a href="#!" class="text-white">{{ __('Contact Us') }}</a>
             </u>
         </li>
         </ul>
@@ -105,17 +120,17 @@
     <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Group</h5>
+        <h5 class="text-uppercase">{{ __('Group') }}</h5>
 
         <ul class="list-unstyled">
         <li>
-            <p>David Calle Daza - Principal Architecture</p>
+            <p>David Calle Daza - {{ __('Principal Architecture') }}</p>
         </li>
         <li>
-            <p>Luis Fernando Posada - Usability Architecture</p>
+            <p>Luis Fernando Posada - {{ __('Usability Architecture') }}</p>
         </li>
         <li>
-            <p>Santiago Moreno - Developer</p>
+            <p>Santiago Moreno - {{ _('Developer') }}</p>
         </li>
         </ul>
 
