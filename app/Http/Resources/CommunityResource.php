@@ -8,6 +8,7 @@ class CommunityResource extends JsonResource {
 
     public function toArray($request) {
         return [
+            'id' => $this->getId(),
             'community_name' => $this->getName(),
             'admin_name' => $this->admin->getName(),
             'admin_email' => $this->admin->getEmail(),

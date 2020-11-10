@@ -17,12 +17,22 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <a class="navbar-brand color-white" href="{{ route('community.index') }}">{{ __('Communities') }}</a>
+                        <li class="nav-item dropdown">
+                                <a class="navbar-brand dropdown-toggle color-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('Language') }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @inject('langChanger', 'App\Http\Controllers\LangController')
+                                    <a class="dropdown-item" href="{{ $langChanger::changeLang('en') }}"><img src="{{ asset('img/en.png') }}" width="30px" height="20x"> English</a>
+                                    <a class="dropdown-item" href="{{ $langChanger::changeLang('es') }}"><img src="{{ asset('img/es.png') }}" width="30px" height="20x"> Español</a>
+                                </div>
+                        </li>                     
                     </ul>
+                    
 
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::user())
@@ -50,21 +60,6 @@
                 <li></li>
                 <li></li>
             </ul>
-        </div>
-
-        <div>
-        <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre >
-                                {{ __('Language') }} <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @inject('langChanger', 'App\Http\Controllers\LangController')
-                                <a class="dropdown-item" href="{{ $langChanger::changeLang('en') }}"><img src="{{asset('img/en.png')}}" width="30px" height="20x"> English</a>
-                                <a class="dropdown-item" href="{{ $langChanger::changeLang('es') }}"><img src="{{asset('img/es.png')}}" width="30px" height="20x"> Español</a>
-                            </div>
-                        </li>
-                    </ul>
         </div>
 
         <main class="py-4">
@@ -149,6 +144,8 @@
 </footer>
 
 <!-- Scripts -->
+<script src="{{ asset('jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 
 </html>
