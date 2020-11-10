@@ -35,16 +35,16 @@
                         @csrf               
                         <input type="hidden" value="{{ $data['announcement']->getId() }}" name="id" />        
                         <label for="title">{{ __('Title') }}:</label>
-                        <input type="text" placeholder="Title of the announcement" name="title" class="form-control" value="{{ $data['announcement']->getTitle() }}" />
+                        <input type="text" placeholder="{{ __('Title of the announcement') }}" name="title" class="form-control" value="{{ $data['announcement']->getTitle() }}" />
                         <label for="content">{{ __('Content') }}:</label>
                         <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['announcement']->getContent() }}</textarea>
                         <label for="tags">{{ __('Tags') }}:</label>
                         <input type="text" name="tags" value="{{ $data['announcement']->getTags() }}" class="form-control"/>
                         <label for="topics">{{ __('Topics') }}:</label>
-                        <input type="text" name="topics" placeholder="announcement Topics" value="{{ $data['announcement']->getTopics() }}" class="form-control"/>
+                        <input type="text" name="topics" placeholder="{{ __('Announcement Topics') }}" value="{{ $data['announcement']->getTopics() }}" class="form-control"/>
                         <label for="expire">{{ __(Expiration Date') }}:</label>
                         <input type="date" name="expire" value="{{ $data['announcement']->getExpire() }}" class="form-control"/>
-                        <input type="submit" value="Update" class="btn btn-primary mt-3"/>
+                        <input type="submit" value="{{ __('Update') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>
 

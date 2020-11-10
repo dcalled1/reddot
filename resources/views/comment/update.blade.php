@@ -38,7 +38,7 @@
                         <input type="hidden" value="{{ $data['post'] }}" name="post_id" />    
                         <label for="content">{{ __('Content') }}:</label>
                         <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['comment']->getContent() }}</textarea>
-                        <input type="submit" value="Update" class="btn btn-primary mt-3"/>
+                        <input type="submit" value="{{ __('Update') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>
 

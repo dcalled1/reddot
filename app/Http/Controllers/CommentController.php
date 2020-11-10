@@ -31,9 +31,9 @@ class CommentController extends Controller
         Comment::create($request->only(['content', 'author_id', 'post_id']));
         $data = [];
         $data["community"] = $community_id;
-        $data["title"] = "Posts Dashboard";
+        $data["title"] = __("Posts Dashboard");
         $data["post"] = Post::all()->where('community_id', $community_id);
-        $data["success"] = 'Comment created correctly!';
+        $data["success"] = __('Comment created correctly!');
         return redirect()->route('post.index', $community_id)->with('data', $data);
     }
 
@@ -41,7 +41,7 @@ class CommentController extends Controller
     public function update($community, $post, $comment)
     {
         $data = []; 
-        $data["title"] = "Update Comment";
+        $data["title"] = __("Update Comment");
         $data["post"] = $post;
         $data["community"] = $community;
         $comment2 = Comment::findOrFail($comment);
@@ -62,7 +62,7 @@ class CommentController extends Controller
         $post_id = $request['post_id'];
         $community_id = $request['community_id'];
         Comment::findOrFail($comment_id)->update(['content' => $content]);
-        $data["success"] = 'Comment updated correctly!';
+        $data["success"] = __('Comment updated correctly!');
         return redirect()->route('post.show', [$community_id, $post_id])->with('data', $data);
     }
 

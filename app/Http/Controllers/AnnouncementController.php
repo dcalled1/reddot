@@ -25,7 +25,7 @@ class AnnouncementController extends Controller
         error_log($request['expire']);
         Announcement::create($request->only(['title', 'author_id','community_id', 'content', 'tags', 'topics', 'expire']));
         $data = [];
-        $data["success"] = 'Announcement created correctly!';
+        $data["success"] = __('Announcement created correctly!');
         return back()->with('data', $data);
     }
 
@@ -51,7 +51,7 @@ class AnnouncementController extends Controller
         Announcement::validate($request);
         Announcement::findOrFail($announcement_id)->update(['title' => $title, 'title' => $title, 'title' => $title, 'content' => $content, 'tags' => $tags, 'topics' => $topics, 'expire' => $expire]);
         $data = [];
-        $data["success"] = 'Announcement updated correctly!';
+        $data["success"] = __('Announcement updated correctly!');
         return back()->with('data', $data);
     }
 
@@ -59,7 +59,7 @@ class AnnouncementController extends Controller
     public function index($community)
     {
         $data = [];
-        $data["title"] = "Announcements Dashboard";
+        $data["title"] = __("Announcements Dashboard");
         $data["announcement"] = Announcement::all()->where('community_id', $community);
         $data["community"] = Community::findOrFail($community);
         return view('announcement.index')->with("data",$data);
@@ -79,8 +79,8 @@ class AnnouncementController extends Controller
         $community = Announcement::findOrFail($id)->getCommunity();
         $res=Announcement::where('id',$id)->delete();
         $data = [];
-        $data["title"] = "Announcement Dashboard";
-        $data["success"] = 'Announcement deleted correctly!';
+        $data["title"] = __("Announcements Dashboard");
+        $data["success"] = __('Announcement deleted correctly!');
         $data["announcement"] = Announcement::all();
         return redirect()->route('announcement.index', $community)->with('data', $data);
     }

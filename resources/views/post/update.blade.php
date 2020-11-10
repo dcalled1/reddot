@@ -36,14 +36,14 @@
                         @csrf               
                         <input type="hidden" value="{{ $data['post']->getId() }}" name="id" />        
                         <label for="title">{{ __('Title') }}:</label>
-                        <input type="text" placeholder="Title of Post" name="title" class="form-control" value="{{ $data['post']->getTitle() }}" />
+                        <input type="text" placeholder="{{ _('Title of the post') }}" name="title" class="form-control" value="{{ $data['post']->getTitle() }}" />
                         <label for="content">{{ __('Content') }}:</label>
                         <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['post']->getContent() }}</textarea>
                         <label for="tags">{{ __('Tags') }}:</label>
                         <input type="text" name="tags" placeholder = "Post tags"value="{{ $data['post']->getTags() }}" class="form-control"/>
                         <label for="topics">{{ __('Topics') }}:</label>
-                        <input type="text" name="topics" placeholder="Post topics" value="{{ $data['post']->getTopics() }}" class="form-control"/>
-                        <input type="submit" value="Update" class="btn btn-primary mt-3"/>
+                        <input type="text" name="topics" placeholder="{{ __('Post Topics') }}" value="{{ $data['post']->getTopics() }}" class="form-control"/>
+                        <input type="submit" value="{{ __('Update') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>
 

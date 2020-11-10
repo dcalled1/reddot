@@ -24,14 +24,14 @@
                         @csrf               
                         <input type="hidden" value="{{ $data['community']->getId() }}" name="id" />        
                         <label for="name">{{ __('Name') }}:</label>
-                        <input type="text" placeholder="Name of the community" name="name" class="form-control" value="{{ $data['community']->getName() }}" />
+                        <input type="text" placeholder="{{ __('Name of the community') }}" name="name" class="form-control" value="{{ $data['community']->getName() }}" />
                         <label for="description">{{ __('Description') }}:</label>
                         <textarea name="description" class="form-control" rows="5" cols="30">{{ $data['community']->getDescription() }}</textarea>
                         <label for="topics">{{ __('Topics') }}:</label>
-                        <input type="text" name="topics" placeholder="Post Topics" value="{{ $data['community']->getTopics() }}" class="form-control"/>
+                        <input type="text" name="topics" placeholder="{{ __('Post Topics') }}" value="{{ $data['community']->getTopics() }}" class="form-control"/>
                         <label for="preferredTags">{{ __('Preferred Tags') }}:</label>
                         <input type="text" name="preferredTags" value="{{ $data['community']->getPreferredTags() }}" class="form-control"/>
-                        <input type="submit" value="Update" class="btn btn-primary mt-3"/>
+                        <input type="submit" value="{{ __('Update') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>
 

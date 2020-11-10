@@ -29,7 +29,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="text" hidden value="{{ $community->getId() }}" name="id" />
-                                    <input type="submit" value="Delete Community" class="btn btn-danger">
+                                    <input type="submit" value="{{ __('Delete Community') }}" class="btn btn-danger">
                                 </form>
                                 <a href="{{ route('community.update', $community->getId()) }}" class="btn btn-primary">{ __('Update Community') }}</a>
                         @endif
