@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('community.index') }}">{{ __('Communities') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('community.show', $data['community']->id) }}">{{ $data["community"]->name }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('post.index', $data['community']->id) }}">{{ __('Posts') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('post.show', [$data['community']->id, $data['post']->getId()]) }}">{{ data["post"]->getTitle() }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('post.show', [$data['community']->id, $data['post']->getId()]) }}">{{ $data["post"]->getTitle() }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ __('Create Posts') }}</li>
                         </ol>
                     </nav>
