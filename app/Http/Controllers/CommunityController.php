@@ -13,7 +13,7 @@ class CommunityController extends Controller
     public function create()
     {
         $data = [];
-        $data['title'] = "Create community";
+        $data['title'] = __("Create community");
 
         return view('community.create')->with('data', $data);
     }
@@ -29,7 +29,7 @@ class CommunityController extends Controller
                                           'admin_id']));
 
         $data = [];
-        $data['success'] = 'Community created successfully!';
+        $data['success'] = __('Community created successfully!');
 
         return back()->with('data', $data);
     }
@@ -38,7 +38,7 @@ class CommunityController extends Controller
     public function update($id)
     {
         $data = [];
-        $data['title'] = 'Update community';
+        $data['title'] = __('Update community');
         $data['community'] = Community::findOrFail($id);
 
         return view('community.update')->with('data', $data);
@@ -55,7 +55,7 @@ class CommunityController extends Controller
         $preferredTags = $request['preferredTags'];
 
         $data = [];
-        $data['success'] = "Community updated successfully!";
+        $data['success'] = __("Community updated successfully!");
 
         Community::validate($request);
         Community::findOrFail($id)->update(['name' => $name, 'description' => $description, 'topics' => $topics, 'preferredTags' => $preferredTags]);
@@ -68,7 +68,7 @@ class CommunityController extends Controller
     public function index()
     {
         $data = [];
-        $data['title'] = 'Communities';
+        $data['title'] = __('Communities');
         $data['communities'] = Community::all();
 
         return view('community.index')->with('data', $data);
@@ -91,8 +91,8 @@ class CommunityController extends Controller
         $res=Community::findOrFail($id)->delete();
         
         $data = [];
-        $data["title"] = "Communities";
-        $data["success"] = 'Community deleted successfully!';
+        $data["title"] = __("Communities");
+        $data["success"] = __('Community deleted successfully!');
 
         return redirect()->route('community.index');
     }

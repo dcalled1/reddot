@@ -32,14 +32,14 @@
                     <div class="form-group">
                         @csrf                       
                         <label for="name">{{ __('Name') }}:</label>
-                        <input type="text" placeholder="Name of the community" name="name" class="form-control" value="{{ old('name') }}" />
+                        <input type="text" placeholder="{{ __('Name of the community') }}" name="name" class="form-control" value="{{ old('name') }}" />
                         <input type="hidden" value="{{ Auth::user()->getId() }}" name="admin_id" />
                         <label for="description">{{ __('Description') }}:</label>
                         <textarea name="description" class="form-control" rows="5" cols="30"></textarea>
                         <label for="topics">{{ __('Topics') }}:</label>
-                        <input type="text" name="topics" placeholder="Community topics" value="{{ old('topics') }}" class="form-control"/>
+                        <input type="text" name="topics" placeholder="{{ __('Community topics') }}" value="{{ old('topics') }}" class="form-control"/>
                         <label for="preferredTags">{{ __('Preferred Tags') }}:</label>
-                        <input type="text" name="preferredTags" placeholder="Preferred Tags" value="{{ old('preferredTags') }}" class="form-control"/>
+                        <input type="text" name="preferredTags" placeholder="{{ __('Preferred Tags') }}" value="{{ old('preferredTags') }}" class="form-control"/>
                         <input type="submit" value="{{ __('Create') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>

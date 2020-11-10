@@ -26,7 +26,7 @@
                                 <form method="POST" action="{{ route('post.delete') }}" class="">
                                     @csrf                       
                                     <input type="hidden" value="{{ $post['id'] }}" name="id" />
-                                    <input type="submit" value="Delete Post" class="btn btn-danger" />
+                                    <input type="submit" value="{{ __('Delete Post') }}" class="btn btn-danger" />
                                 </form>
 
                             </div>

@@ -13,7 +13,7 @@ class PostController extends Controller
     public function create($community)
     {
         $data = []; 
-        $data["title"] = "Create Post";
+        $data["title"] = __("Create Post");
         $data["community"] = Community::findorFail($community);
         return view('post.create')->with("data",$data);
     }
@@ -24,7 +24,7 @@ class PostController extends Controller
         Post::validate($request);
         Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
         $data = [];
-        $data["success"] = 'Post created correctly!';
+        $data["success"] = __('Post created correctly!');
         return back()->with('data', $data);
     }
 
@@ -32,7 +32,7 @@ class PostController extends Controller
     public function update($community, $post)
     {
         $data = []; 
-        $data["title"] = "Update Post";
+        $data["title"] = __("Update Post");
         $data['post'] = Post::findOrFail($post);
         $data['community'] = Community::findOrFail($community);
         return view('post.update')->with("data",$data);
@@ -50,7 +50,7 @@ class PostController extends Controller
         Post::validate($request);
         Post::findOrFail($post_id)->update(['content' => $content, 'tags' => $tags, 'topics' => $topics, 'title' => $title]);
         $data = [];
-        $data["success"] = 'Post updated correctly!';
+        $data["success"] = __('Post updated correctly!');
         return back()->with('data', $data);
     }
 
@@ -58,7 +58,7 @@ class PostController extends Controller
     public function index($community)
     {
         $data = [];
-        $data["title"] = "Posts Dashboard";
+        $data["title"] = __("Posts Dashboard");
         $data["post"] = Post::all()->where('community_id', $community);
         $data["community"] = Community::findOrFail($community);
          return view('post.index')->with("data",$data);
@@ -78,8 +78,8 @@ class PostController extends Controller
         $community = Post::findOrFail($id)->getCommunity();
         $res=Post::where('id',$id)->delete();
         $data = [];
-        $data["title"] = "Post Dashboard";
-        $data["success"] = 'Post deleted correctly!';
+        $data["title"] = __("Posts Dashboard");
+        $data["success"] = __('Post deleted correctly!');
         $data["post"] = Post::all();
         return redirect()->route('post.index', $community)->with('data', $data);
     }

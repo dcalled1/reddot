@@ -34,7 +34,7 @@
                     <div class="form-group">
                         @csrf                       
                         <label for="title">{{ __('Title') }}:</label>
-                        <input type="text" placeholder="Title of the post" name="title" class="form-control" value="{{ old('title') }}" />
+                        <input type="text" placeholder="{{ __('Title of the post') }}" name="title" class="form-control" value="{{ old('title') }}" />
                         <input type="hidden" value="{{ Auth::user()->id }}" name="author_id" />
                         <input type="hidden"  value="{{ $data['community']->id }}" name="community_id" />
                         <label for="content">{{ __('Content') }}:</label>
@@ -42,7 +42,7 @@
                         <label for="tags">{{ __('Tags') }}:</label>
                         <input type="text" name="tags" value="{{ old('tags') }}" class="form-control"/>
                         <label for="topics">{{ __('Topics') }}:</label>
-                        <input type="text" name="topics" placeholder="Post Topics" value="{{ old('topics') }}" class="form-control"/>
+                        <input type="text" name="topics" placeholder="{{ __('Post Topics') }}" value="{{ old('topics') }}" class="form-control"/>
                         <input type="submit" value="{{ __('Create') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>

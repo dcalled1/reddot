@@ -25,7 +25,7 @@
                                 <form method="POST" action="{{ route('announcement.delete') }}" class="mr-2">
                                     @csrf                       
                                     <input type="hidden" value="{{ $announcement['id'] }}" name="id" />
-                                    <input type="submit" value="Delete Announcement" class="btn btn-danger" />
+                                    <input type="submit" value="{{ __('Delete Announcement') }}" class="btn btn-danger" />
                                 </form>
                             </div>
                             <div class="div">
