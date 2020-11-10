@@ -10,6 +10,10 @@ use App\Models\Community;
 use Illuminate\Http\Request;
 
 class CommunityApi extends Controller {
+
+    public function index() {
+        return CommunityResource::collection(Community::all());
+    }
     
     
     public function info($id) {
