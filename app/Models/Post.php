@@ -127,7 +127,4 @@ class Post extends Model
         return $this->attributes['created'];
     }
 
-    public function countPosts() {
-        return count($this->community);
-    }
 }
