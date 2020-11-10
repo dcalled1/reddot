@@ -108,7 +108,7 @@ class CommunityController extends Controller
         
         $community->addMember($user);
 
-        error_log($community);
+        //error_log($community);
 
         return back()->with('community', $community);
     }
