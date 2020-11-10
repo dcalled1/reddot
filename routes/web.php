@@ -58,3 +58,6 @@ Route::post('/comment/delete', 'App\Http\Controllers\CommentController@delete')-
 
 //Lang
 Route::get('/{lang}', 'App\Http\Controllers\LangController@changeLang');
+
+//twitter
+Route::post('/post/tweet', 'App\Http\Controllers\PostController@tweet')->name("post.tweet");

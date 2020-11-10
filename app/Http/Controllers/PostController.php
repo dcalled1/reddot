@@ -166,4 +166,8 @@ class PostController extends Controller
         return null;
     }
     
+    public function tweet(Request $request)
+    {
+        return Twitter::postTweet(['status' =>'Mi primer tweet desde Laravel','format' =>'json']);
+    }
 }
