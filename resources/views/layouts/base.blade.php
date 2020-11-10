@@ -26,9 +26,8 @@
                                 {{ __('Language') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @inject('langChanger', 'App\Http\Controllers\LangController')
-                                    <a class="dropdown-item" href="{{ $langChanger::changeLang('en') }}"><img src="{{ asset('img/en.png') }}" width="30px" height="20x"> English</a>
-                                    <a class="dropdown-item" href="{{ $langChanger::changeLang('es') }}"><img src="{{ asset('img/es.png') }}" width="30px" height="20x"> Español</a>
+                                    <a class="dropdown-item" href="language/en"><img src="{{ asset('img/en.png') }}" width="30px" height="20x"> English</a>
+                                    <a class="dropdown-item" href="language/es"><img src="{{ asset('img/es.png') }}" width="30px" height="20x"> Español</a>
                                 </div>
                         </li>                     
                     </ul>

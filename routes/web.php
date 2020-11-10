@@ -57,4 +57,4 @@ Route::post('/comment/update', 'App\Http\Controllers\CommentController@saveUpdat
 Route::post('/comment/delete', 'App\Http\Controllers\CommentController@delete')->name("comment.delete");
 
 //Lang
-Route::get('/{lang}', 'App\Http\Controllers\LangController@changeLang');
+Route::get('/language/{lang}', 'App\Http\Controllers\LangController@changeLang')->name("language.change");
