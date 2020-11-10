@@ -6,6 +6,7 @@
     <!-- Styles -->   
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
@@ -125,7 +126,7 @@
             <p>Luis Fernando Posada - {{ __('Usability Architecture') }}</p>
         </li>
         <li>
-            <p>Santiago Moreno - {{ __('Developer') }}</p>
+            <p>Santiago Moreno - {{ _('Developer') }}</p>
         </li>
         </ul>
 
