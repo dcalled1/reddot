@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use App\Models\Community;
 use Validator;
 
 class AnnouncementController extends Controller
@@ -13,7 +14,7 @@ class AnnouncementController extends Controller
     {
         $data = []; 
         $data["title"] = "Create Announcement";
-        $data["community"] = $community;
+        $data["community"] = Community::findOrFail($community);
         return view('announcement.create')->with("data",$data);
     }
 
@@ -34,7 +35,7 @@ class AnnouncementController extends Controller
         $data = []; 
         $data["title"] = "Update Announcement";
         $data['announcement'] = Announcement::findOrFail($id);
-
+        $data['community'] = Community::findOrFail($community);
         return view('announcement.update')->with("data",$data);
     }
 
@@ -60,7 +61,7 @@ class AnnouncementController extends Controller
         $data = [];
         $data["title"] = "Announcements Dashboard";
         $data["announcement"] = Announcement::all()->where('community_id', $community);
-        $data["community"] = $community;
+        $data["community"] = Community::findOrFail($community);
         return view('announcement.index')->with("data",$data);
     }
 
@@ -68,7 +69,6 @@ class AnnouncementController extends Controller
     public function show($community, $id)
     {
         $announcement = Announcement::findOrFail($id);
-
         return view('announcement.show')->with("announcement",$announcement);
     }
 

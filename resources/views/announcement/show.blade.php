@@ -5,20 +5,34 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                @if (Auth::user()->id == $announcement['author_id'])
-                    <div class="ml-auto row">
-                        <form method="POST" action="{{ route('announcement.delete') }}" class="mr-2">
-                            @csrf                       
-                            <input type="hidden" value="{{ $announcement['id'] }}" name="id" />
-                            <input type="submit" value="Delete Announcement" class="btn btn-danger" />
-                        </form>
-                        
-                        <a href="{{ route('announcement.update', [$announcement['community_id'], $announcement['id']] ) }}" class="btn btn-primary">Update Announcement</a>
-                    </div>
+                    <nav aria-label="breadcrumb mr-auto">
+                        <ol class="breadcrumb bg-transparent">
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.show', $announcement['community_id'] ) }}">{{ $announcement->community()->get()[0]->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('announcement.index', $announcement['community_id']) }}">Announcements</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $announcement->getTitle() }}</li>
+                        </ol>
+                    </nav>
+                @if (Auth::user())
+                    @if (Auth::user()->id == $announcement['author_id'])
+                        <div class="row ml-auto">
+                            <div class="mr-5">
+                                <form method="POST" action="{{ route('announcement.delete') }}" class="mr-2">
+                                    @csrf                       
+                                    <input type="hidden" value="{{ $announcement['id'] }}" name="id" />
+                                    <input type="submit" value="Delete Announcement" class="btn btn-danger" />
+                                </form>
+                            </div>
+                            <div class="div">
+                            <a href="{{ route('announcement.update', [$announcement['community_id'], $announcement['id']] ) }}" class="btn btn-primary">Update Announcement</a>
+                            </div>
+                        </div>
+                    @endif
                 @endif
                 </div>
 

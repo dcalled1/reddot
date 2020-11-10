@@ -16,6 +16,10 @@ class CommentController extends Controller
         $data["title"] = "Create Comment";
         $data["community"] = $community;
         $data["post"] = $post;
+        $post2 = Post::findOrFail($post);
+        $data["post_name"] = $post2->title;
+        $community = $post2->community()->get();
+        $data["community_name"] = $community[0]->name;
         return view('comment.create')->with("data",$data);
     }
 
@@ -40,7 +44,12 @@ class CommentController extends Controller
         $data["title"] = "Update Comment";
         $data["post"] = $post;
         $data["community"] = $community;
-        $data['comment'] = Comment::findOrFail($comment);
+        $comment2 = Comment::findOrFail($comment);
+        $data['comment'] = $comment2;
+        $post2 = $comment2->post()->get();
+        $data["post_name"] = $post2[0]->title;
+        $community = $post2[0]->community()->get();
+        $data["community_name"] = $community[0]->name;
 
         return view('comment.update')->with("data",$data);
     }

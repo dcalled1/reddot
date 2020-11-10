@@ -5,26 +5,35 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                @if (Auth::user()->id == $community->admin->getId())
-                    <div class="ml-auto row">
-                        <form action="{{ route('community.join') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="community_id" value="{{ $community->getId() }}"/>
-                            <button class="btn btn-primary mr-2" type="submit">Join Community</button>
-                        </form>
-                        <form method="POST" action="{{ route('community.delete') }}" class="mr-2">
-                            @csrf
-                            @method('DELETE')
-                            <input type="text" hidden value="{{ $community->getId() }}" name="id" />
-                            <input type="submit" value="Delete Community" class="btn btn-danger">
-                        </form>
-                        <a href="{{ route('community.update', $community->getId()) }}" class="btn btn-primary">Update Community</a>
-                    </div>
-                @endif
+                    <nav aria-label="breadcrumb mr-auto">
+                        <ol class="breadcrumb bg-transparent">
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $community->getName() }}</li>
+                        </ol>
+                    </nav>
+                    @if (Auth::user())
+                        <div class="ml-auto row">
+                            <form action="{{ route('community.join') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="community_id" value="{{ $community->getId() }}"/>
+                                <button class="btn btn-primary mr-2" type="submit">Join Community</button>
+                            </form>
+                        </div>
+                        @if (Auth::user()->id == $community->admin->getId())
+                                <form method="POST" action="{{ route('community.delete') }}" class="mr-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="text" hidden value="{{ $community->getId() }}" name="id" />
+                                    <input type="submit" value="Delete Community" class="btn btn-danger">
+                                </form>
+                                <a href="{{ route('community.update', $community->getId()) }}" class="btn btn-primary">Update Community</a>
+                        @endif
+                    @endif
                 </div>
 
                 <div class="card-body">

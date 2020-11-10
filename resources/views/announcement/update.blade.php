@@ -8,7 +8,18 @@
         <div class="col-md-12">
         @include('util.message')
             <div class="card">
-                <div class="card-header">Update Announcement</div>
+                <div class="card-header">
+                <nav aria-label="breadcrumb mr-auto">
+                    <ol class="breadcrumb bg-transparent">
+                        <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('community.show', $data['community']->id) }}">{{ $data["community"]->name }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('announcement.index', $data['community']->id) }}">Announcements</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('announcement.show', [$data['community']->id, $data['announcement']->getId()]) }}">{{ $data["announcement"]->getTitle() }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Update Announcement</li>
+                    </ol>
+                </nav>
+                Update Announcement</div>
                 <div class="card-body">
                 @if($errors->any())
                 <ul id="errors">

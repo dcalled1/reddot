@@ -5,13 +5,21 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                Communities
-                <a href="{{ route('community.create') }}" class="ml-auto btn btn-primary">Create Community</a>
-                
+                    <nav aria-label="breadcrumb mr-auto">
+                        <ol class="breadcrumb bg-transparent">
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                            <!--li class="breadcrumb-item"><a href="{{ route('community.index') }}">Library</a></li-->
+                            <li class="breadcrumb-item active" aria-current="page">Communities</li>
+                        </ol>
+                    </nav>
+                    <p class="mx-auto text-center">Communities</p>
+                    <div class="ml-auto">
+                        <a href="{{ route('community.create') }}" class="btn btn-primary text-center">Create Community</a>
+                    </div>                                 
                 </div>
 
                 <div class="card-body">

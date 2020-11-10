@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $data = []; 
         $data["title"] = "Create Post";
-        $data["community"] = $community;
+        $data["community"] = Community::findorFail($community);
         return view('post.create')->with("data",$data);
     }
 
@@ -34,7 +34,7 @@ class PostController extends Controller
         $data = []; 
         $data["title"] = "Update Post";
         $data['post'] = Post::findOrFail($post);
-
+        $data['community'] = Community::findOrFail($community);
         return view('post.update')->with("data",$data);
     }
 
@@ -60,7 +60,7 @@ class PostController extends Controller
         $data = [];
         $data["title"] = "Posts Dashboard";
         $data["post"] = Post::all()->where('community_id', $community);
-        $data["community"] = $community;
+        $data["community"] = Community::findOrFail($community);
          return view('post.index')->with("data",$data);
     }
 

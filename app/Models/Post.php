@@ -34,10 +34,10 @@ class Post extends Model
 
     public static function validate(Request $request) {
         $request->validate([
-            "title" => "required",
+            "title" => "required|max:20",
             "content" => "required",
-            "tags" => "required",
-            "topics"  => "required"
+            "tags" => "required|max:20",
+            "topics"  => "required|max:20"
         ]);
     }
 
