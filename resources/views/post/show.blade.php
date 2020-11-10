@@ -5,20 +5,37 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @include('util.message')
             <div class="card">
                 <div class="card-header d-flex">
-                @if (Auth::user()->id == $post['author_id'])
-                    <div class="ml-auto row">
-                        <form method="POST" action="{{ route('post.delete') }}" class="mr-2">
-                            @csrf                       
-                            <input type="hidden" value="{{ $post['id'] }}" name="id" />
-                            <input type="submit" value="Delete Post" class="btn btn-danger" />
-                        </form>
-                        
-                        <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">Update Post</a>
-                    </div>
+                    <nav aria-label="breadcrumb mr-auto">
+                        <ol class="breadcrumb bg-transparent">
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.show', $post['community_id'] ) }}">{{ $post->community()->get()[0]->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('post.index', $post['community_id']) }}">Posts</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $post->getTitle() }}</li>
+                        </ol>
+                    </nav>
+                @if (Auth::user())
+                    
+                    @if (Auth::user()->id == $post['author_id'])
+                        <div class="row ml-auto">
+                            <div class="mr-5">
+                                <form method="POST" action="{{ route('post.delete') }}" class="">
+                                    @csrf                       
+                                    <input type="hidden" value="{{ $post['id'] }}" name="id" />
+                                    <input type="submit" value="Delete Post" class="btn btn-danger" />
+                                </form>
+
+                            </div>
+                            <div class="">
+                                
+                                <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">Update Post</a>
+                            </div>
+                        </div>   
+                    @endif
                 @endif
                 </div>
 
@@ -35,7 +52,11 @@
                                     <h6 class="mx-5">Topics: {{ $post['topics'] }}</h6>
                                 </div>
                                 <div class="mt-auto">
-                                    <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">Comment</a>
+                                    @if (Auth::user())
+                                        <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">Comment</a>
+                                    @else
+                                        <a href="{{ route('register') }}">Comment</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -56,19 +77,21 @@
                                 <div class="row">
                                     {{ $comment->content }}
                                 </div>
-                                @if (Auth::user()->id == $comment->author->id)
-                                    <div class="d-flex">
-                                        <div class="ml-auto row">
-                                            <a href="{{ route('comment.update', [$post['community_id'], $post['id'], $comment['id']]) }}" class="btn btn-link">Edit</a>
-                                            <form action="{{ route('comment.delete') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" value="{{ $comment->getId() }}" name="id">
-                                                <input type="hidden" value="{{ $post['community_id'] }}" name="community_id">
-                                                <input type="hidden" value="{{ $post['id'] }}" name="post_id">
-                                                <input type="submit" value="Delete" class="btn btn-link">
-                                            </form>
+                                @if (Auth::user())
+                                    @if (Auth::user()->id == $comment->author->id)
+                                        <div class="d-flex">
+                                            <div class="ml-auto row">
+                                                <a href="{{ route('comment.update', [$post['community_id'], $post['id'], $comment['id']]) }}" class="btn btn-link">Edit</a>
+                                                <form action="{{ route('comment.delete') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $comment->getId() }}" name="id">
+                                                    <input type="hidden" value="{{ $post['community_id'] }}" name="community_id">
+                                                    <input type="hidden" value="{{ $post['id'] }}" name="post_id">
+                                                    <input type="submit" value="Delete" class="btn btn-link">
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>

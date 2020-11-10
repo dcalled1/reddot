@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>@yield('title','Home Page')</title>
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <!-- Styles -->   
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
     <div id="app">
@@ -57,6 +57,81 @@
         </main>
     </div>
 </body>
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-light pt-4 text-white">
+<!-- Footer Links -->
+<div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Reddot<i class="fas fa-leaf"></i></h5>
+        <p></p>
+
+    </div>
+    <!-- Grid column -->
+
+    <hr class="clearfix w-100 d-md-none pb-3">
+
+    <!-- Grid column -->
+    <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Sites</h5>
+
+        <ul class="list-unstyled">
+        <li>
+            <u>
+            <a href="{{ route('home.index') }}" class="text-white">Home</a>
+        </li>
+        <li>
+            <a href="#!" class="text-white">Communities</a>
+        </li>
+        <li>
+            <a href="#!" class="text-white">Contact Us</a>
+            </u>
+        </li>
+        </ul>
+
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Group</h5>
+
+        <ul class="list-unstyled">
+        <li>
+            <p>David Calle Daza - Principal Architecture</p>
+        </li>
+        <li>
+            <p>Luis Fernando Posada - Usability Architecture</p>
+        </li>
+        <li>
+            <p>Santiago Moreno - Developer</p>
+        </li>
+        </ul>
+
+    </div>
+    <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+</div>
+<!-- Footer Links -->
+
+<!-- Copyright -->
+<!-- Copyright -->
+
+</footer>
 
 <!-- Scripts -->
 

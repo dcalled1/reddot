@@ -100,6 +100,23 @@ body{
     height: 110px;
     animation-delay: 3.5s;
 }
+
+.card-header p{
+    font-size: 30px;
+}
+
+.subtitle{
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.subtitle .content{
+    font-size: 15px;
+    text-align: justify;
+    justify-content: center;
+}
+
 @keyframes animate{
     0%{
         transform: translateY(0) rotate(0deg);
