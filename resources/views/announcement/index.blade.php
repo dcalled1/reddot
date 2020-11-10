@@ -11,15 +11,15 @@
                 <div class="card-header d-flex">
                     <nav aria-label="breadcrumb mr-auto">
                             <ol class="breadcrumb bg-transparent">
-                                <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('community.index') }}">{{ __('Communities') }}</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('community.show', $data['community']->id) }}">{{ $data["community"]->name }}</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Announcements</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ __('Announcements') }}</li>
                             </ol>
                     </nav>
-                    <p class="mx-auto">Announcements</p>
+                    <p class="mx-auto">{{ __('Announcements') }}</p>
                     <div class="ml-auto">
-                        <a href="{{ route('announcement.create', $data['community']->id ) }}" class="btn btn-primary">Create Announcement</a>
+                        <a href="{{ route('announcement.create', $data['community']->id ) }}" class="btn btn-primary">{{ __('Create Announcement') }}</a>
                     </div>
 
                 </div>
@@ -30,9 +30,9 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
-                                        <th>Topics</th>
-                                        <th>Tags</th>
+                                        <th>{{ __('Title') }}</th>
+                                        <th>{{ __('Topics') }}</th>
+                                        <th>{{ __('Tags') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

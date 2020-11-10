@@ -11,14 +11,14 @@
                 <div class="card-header">
                     <nav aria-label="breadcrumb mr-auto">
                         <ol class="breadcrumb bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('community.index' ) }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index' ) }}">{{ __('Communities') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('community.show', $data['community'] ) }}">{{ $data['community_name'] }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('post.show', [$data['community'], $data['post']] ) }}">{{ $data['post_name'] }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Communities</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('Communities') }}</li>
                         </ol>
                     </nav>
-                    <p>Update Comment</p>
+                    <p>{{ __('Update Comment') }}</p>
                 </div>
                 <div class="card-body">
                 @if($errors->any())
@@ -36,7 +36,7 @@
                         <input type="hidden" value="{{ $data['comment']->getId() }}" name="id" />        
                         <input type="hidden" value="{{ $data['community'] }}" name="community_id" />    
                         <input type="hidden" value="{{ $data['post'] }}" name="post_id" />    
-                        <label for="content">Content:</label>
+                        <label for="content">{{ __('Content') }}:</label>
                         <textarea name="content" class="form-control" rows="20" cols="30">{{ $data['comment']->getContent() }}</textarea>
                         <input type="submit" value="Update" class="btn btn-primary mt-3"/>
                     </div>

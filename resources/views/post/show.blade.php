@@ -11,10 +11,10 @@
                 <div class="card-header d-flex">
                     <nav aria-label="breadcrumb mr-auto">
                         <ol class="breadcrumb bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index') }}">{{ __('Communities') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('community.show', $post['community_id'] ) }}">{{ $post->community()->get()[0]->name }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('post.index', $post['community_id']) }}">Posts</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('post.index', $post['community_id']) }}">{{ __('Posts') }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $post->getTitle() }}</li>
                         </ol>
                     </nav>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="">
                                 
-                                <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">Update Post</a>
+                                <a href="{{ route('post.update', [$post['community_id'], $post['id']] ) }}" class="btn btn-primary">{{ __('Update Post') }}</a>
                             </div>
                         </div>   
                     @endif
@@ -43,19 +43,19 @@
                     <div class="row">
                         <div class="col-12">
                             <h1 class="text-center">{{ $post['title'] }}</h1>
-                            <h4 class="text-center">Author: {{ $post['author']->name }}</h3>
+                            <h4 class="text-center">{{ __('Author') }}: {{ $post['author']->name }}</h3>
                             <br>
                             <p class="test-justify"> {{ $post['content'] }}</p>
                             <div class="d-flex">
                                 <div class="row ml-auto my-5">
-                                    <h6 class="">Tags: {{ $post['tags'] }}</h6>
-                                    <h6 class="mx-5">Topics: {{ $post['topics'] }}</h6>
+                                    <h6 class="">{{ __('Tags') }}: {{ $post['tags'] }}</h6>
+                                    <h6 class="mx-5">{{ __('Topics') }}: {{ $post['topics'] }}</h6>
                                 </div>
                                 <div class="mt-auto">
                                     @if (Auth::user())
-                                        <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">Comment</a>
+                                        <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">{{ __('Comment') }}</a>
                                     @else
-                                        <a href="{{ route('register') }}">Comment</a>
+                                        <a href="{{ route('register') }}">{{ __('Comment') }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="mr-auto">
-                                        Comment By: {{ $comment->author->name }}
+                                        {{ __('Comment By') }}: {{ $comment->author->name }}
                                     </div>
                                     <div class="ml-auto">
                                         {{ $comment->created_at }}
@@ -81,13 +81,13 @@
                                     @if (Auth::user()->id == $comment->author->id)
                                         <div class="d-flex">
                                             <div class="ml-auto row">
-                                                <a href="{{ route('comment.update', [$post['community_id'], $post['id'], $comment['id']]) }}" class="btn btn-link">Edit</a>
+                                                <a href="{{ route('comment.update', [$post['community_id'], $post['id'], $comment['id']]) }}" class="btn btn-link">{{ __('Edit') }}</a>
                                                 <form action="{{ route('comment.delete') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" value="{{ $comment->getId() }}" name="id">
                                                     <input type="hidden" value="{{ $post['community_id'] }}" name="community_id">
                                                     <input type="hidden" value="{{ $post['id'] }}" name="post_id">
-                                                    <input type="submit" value="Delete" class="btn btn-link">
+                                                    <input type="submit" value="{{ __('Delete') }}" class="btn btn-link">
                                                 </form>
                                             </div>
                                         </div>

@@ -13,7 +13,7 @@ class AnnouncementController extends Controller
     public function create($community)
     {
         $data = []; 
-        $data["title"] = "Create Announcement";
+        $data["title"] = __("Create Announcement");
         $data["community"] = Community::findOrFail($community);
         return view('announcement.create')->with("data",$data);
     }
@@ -33,7 +33,7 @@ class AnnouncementController extends Controller
     public function update($community, $id)
     {
         $data = []; 
-        $data["title"] = "Update Announcement";
+        $data["title"] = __("Update Announcement");
         $data['announcement'] = Announcement::findOrFail($id);
         $data['community'] = Community::findOrFail($community);
         return view('announcement.update')->with("data",$data);

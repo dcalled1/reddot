@@ -13,7 +13,7 @@ class CommentController extends Controller
     public function create($community, $post)
     {
         $data = []; 
-        $data["title"] = "Create Comment";
+        $data["title"] = __("Create Comment");
         $data["community"] = $community;
         $data["post"] = $post;
         $post2 = Post::findOrFail($post);

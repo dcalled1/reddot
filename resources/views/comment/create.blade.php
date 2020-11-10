@@ -11,14 +11,14 @@
                 <div class="card-header">
                     <nav aria-label="breadcrumb mr-auto">
                         <ol class="breadcrumb bg-transparent">
-                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('community.index' ) }}">Communities</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home.index') }}">{{ __('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('community.index' ) }}">{{ __('Communities') }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('community.show', $data['community'] ) }}">{{ $data['community_name'] }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('post.show', [$data['community'], $data['post']] ) }}">{{ $data['post_name'] }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Communities</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('Communities') }}</li>
                         </ol>
                     </nav>
-                    <p>Create Comment</p>
+                    <p>{{ __('Create Comment') }}</p>
                 </div>
                 <div class="card-body">
                 @if($errors->any())
@@ -33,12 +33,12 @@
                 <form method="POST" action="{{ route('comment.save') }}">
                     <div class="form-group">
                         @csrf                       
-                        <label for="content">Content:</label>
+                        <label for="content">{{ __('Content') }}:</label>
                         <input type="hidden" value="{{ Auth::user()->id }}" name="author_id" />
                         <input type="hidden"  value="{{ $data['post'] }}" name="post_id" />
                         <input type="hidden"  value="{{ $data['community'] }}" name="community_id" />
                         <textarea name="content" class="form-control" rows="20" cols="30"></textarea>
-                        <input type="submit" value="Create" class="btn btn-primary mt-3"/>
+                        <input type="submit" value="{{ __('Create') }}" class="btn btn-primary mt-3"/>
                     </div>
                 </form>
 
