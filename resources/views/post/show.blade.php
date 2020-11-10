@@ -46,19 +46,17 @@
                             <h4 class="text-center">{{ __('Author') }}: {{ $post['author']->name }}</h3>
                             <br>
                             <p class="test-justify"> {{ $post['content'] }}</p>
-                            <div class="d-flex">
-                                <div class="row ml-auto my-5">
-                                    <h6 class="">{{ __('Tags') }}: {{ $post['tags'] }}</h6>
-                                    <h6 class="mx-5">{{ __('Topics') }}: {{ $post['topics'] }}</h6>
-                                </div>
-                                <div class="mt-auto">
-                                    @if (Auth::user())
-                                        <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">{{ __('Comment') }}</a>
-                                    @else
-                                        <a href="{{ route('register') }}">{{ __('Comment') }}</a>
-                                    @endif
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex row my-5">
+                        <h6 class="mr-auto pl-4">{{ __('Tags') }}: {{ $post['tags'] }} &nbsp; {{ __('Topics') }}: {{ $post['topics'] }}</h6>
+                        <div class="ml-auto pr-4">
+                            <a href="" class="fa fa-twitter mr-2">{{ __('Share on Twitter') }}</a>
+                            @if (Auth::user())
+                                <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">{{ __('Comment') }}</a>
+                            @else
+                                <a href="{{ route('register') }}">{{ __('Comment') }}</a>
+                            @endif
                         </div>
                     </div>
                     @foreach($post->comments as $comment)
