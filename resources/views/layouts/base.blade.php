@@ -27,8 +27,8 @@
                                 {{ __('Language') }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="language/en"><img src="{{ asset('img/en.png') }}" width="30px" height="20x"> English</a>
-                                    <a class="dropdown-item" href="language/es"><img src="{{ asset('img/es.png') }}" width="30px" height="20x"> Español</a>
+                                    <a class="dropdown-item" href="{{ route('lang', 'en') }}"><img src="{{ asset('img/en.png') }}" width="30px" height="20x"> English</a>
+                                    <a class="dropdown-item" href="{{ route('lang', 'es') }}"><img src="{{ asset('img/es.png') }}" width="30px" height="20x"> Español</a>
                                 </div>
                         </li>                     
                     </ul>
@@ -80,7 +80,7 @@
     <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Reddot<i class="fas fa-leaf"></i></h5>
+        <h5 class="text-uppercase">Reddot</i></h5>
         <p></p>
 
     </div>

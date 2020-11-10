@@ -57,7 +57,7 @@ Route::post('/comment/update', 'App\Http\Controllers\CommentController@saveUpdat
 Route::post('/comment/delete', 'App\Http\Controllers\CommentController@delete')->name("comment.delete");
 
 //Lang
-Route::get('/language/{lang}', 'App\Http\Controllers\LangController@changeLang');
+Route::get('/language/{lang}', 'App\Http\Controllers\LangController@changeLang')->name("lang");
 
 //twitter
 Route::post('/post/tweet', 'App\Http\Controllers\PostController@tweet')->name("post.tweet");
