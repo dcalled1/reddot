@@ -50,8 +50,11 @@
                     </div>
                     <div class="d-flex row my-5">
                         <h6 class="mr-auto pl-4">{{ __('Tags') }}: {{ $post['tags'] }} &nbsp; {{ __('Topics') }}: {{ $post['topics'] }}</h6>
-                        <div class="ml-auto pr-4">
-                            <a href="" class="fa fa-twitter mr-2">{{ __('Share on Twitter') }}</a>
+                        <div class="row ml-auto pr-4">
+                            <form action="{{ route('post.tweet') }}" method="POST" class="mr-5">
+                                <button class="btn btn-primary">{{ __('Share on Twitter') }} &nbsp; <i class="fa fa-twitter"></i></button>
+                            </form>
+                            
                             @if (Auth::user())
                                 <a href="{{ route('comment.create', [$post['community_id'], $post['id']]) }}">{{ __('Comment') }}</a>
                             @else
