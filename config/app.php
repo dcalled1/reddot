@@ -180,6 +180,9 @@ return [
         //Twitter API
         Thujohn\Twitter\TwitterServiceProvider::class,
 
+        //Image Service Provider
+        App\Providers\ImageServiceProvider::class,
+
     ],
 
     /*
