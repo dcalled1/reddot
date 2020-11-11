@@ -72,10 +72,21 @@ class PostController extends Controller
     }
 
     //List specific id
-    public function show($community, $post)
+    public function show($communityId, $postId)
     {
-        $postob = Post::findOrFail($post);
-        $title = $postob->getTitle();
+        $post = Post::findOrFail($postId);
+        //check if post url is correct
+        if($communityId != $post->community->getId()) 
+            return redirect()->route('post.show', ['community' => $post->community->getId(), 'post' => $postId]);
+        $postURL = route('post.show', ['community' => $communityId, 'post' => $postId]);
+
+        //Twitter URL generation
+        $title = $post->getTitle();
+        $tweetText = sprintf('"%s". Found this post at ', $title);
+        $tweetURL = 'http://twitter.com/intent/tweet?text='.urlencode($tweetText).'&url='.urlencode($postURL);
+        $data["tweetURL"] = $tweetURL;
+
+        //Image show
         error_log(Storage::disk('local')->exists('\public\Post'.$title.'.png'));
         if(Storage::disk('local')->exists('\public\Post'.$title.'.png')){
             $image = 'storage/Post'.$title.'.png';
@@ -83,7 +94,7 @@ class PostController extends Controller
         }else{
             $data['image'] = null;
         }
-        $data['post'] = $postob;
+        $data['post'] = $post;
         return view('post.show')->with("data",$data);
     }
 

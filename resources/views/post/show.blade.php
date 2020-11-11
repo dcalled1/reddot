@@ -56,7 +56,8 @@
                     <div class="d-flex row my-5">
                         <h6 class="mr-auto pl-4">{{ __('Tags') }}: {{ $data['post']->getTags() }} &nbsp; {{ __('Topics') }}: {{ $data['post']->getTopics() }}</h6>
                         <div class="row ml-auto pr-4">
-                            <form action="{{ route('post.tweet') }}" method="POST" class="mr-5">
+                            <form action="{{ route('post.tweet') }}" method="GET" class="mr-5">
+                                <a href="{{ $data['tweetURL'] }}" class="btn btn-primary" target="_blank">{{ __('Share on Twitter') }}</a>
                                 <button class="btn btn-primary">{{ __('Share on Twitter') }} &nbsp; <i class="fa fa-twitter"></i></button>
                             </form>
                             
