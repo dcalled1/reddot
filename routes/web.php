@@ -64,3 +64,4 @@ Route::post('/post/tweet', 'App\Http\Controllers\PostController@tweet')->name("p
 
 //Image
 Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
+Route::resource('images', 'App\Http\Controllers\ImageController', ['only' => ['store', 'destroy']]);

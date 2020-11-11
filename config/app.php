@@ -183,6 +183,9 @@ return [
         //Image Service Provider
         App\Providers\ImageServiceProvider::class,
 
+        //AWS
+        Aws\Laravel\AwsServiceProvider::class,
+
     ],
 
     /*
@@ -235,6 +238,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
 
     ],
 
