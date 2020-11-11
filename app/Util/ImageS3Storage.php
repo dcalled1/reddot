@@ -14,7 +14,7 @@
                 $file = $request->file('post_image');
                 $name = time() . $file->getClientOriginalName();
                 $filePath = 'images/' . $name;
-                Storage::disk('s3')->put($filePath, file_get_contents($file));
+                //Storage::disk('s3')->put($filePath, file_get_contents($file));
             }
         }
     }

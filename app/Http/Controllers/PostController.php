@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Community;
+use App\Interfaces\ImageStorage;
 use Validator;
 
 class PostController extends Controller
@@ -21,11 +22,14 @@ class PostController extends Controller
     //Save Function
     public function save(Request $request)
     {
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
+        print_r($request->only('post_image'));
         Post::validate($request);
         Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
         $data = [];
         $data["success"] = __('Post created correctly!');
-        return back()->with('data', $data);
+        #return back()->with('data', $data);
     }
 
     //Update function

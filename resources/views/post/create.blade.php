@@ -30,7 +30,7 @@
                 @endif
 
                 <!-- Create Post Form -->
-                <form method="POST" action="{{ route('post.save') }}">
+                <form method="POST" action="{{ route('post.save') }}" enctype="multipart/form-data">
                     <div class="form-group">
                         @csrf                       
                         <label for="title">{{ __('Title') }}:</label>
