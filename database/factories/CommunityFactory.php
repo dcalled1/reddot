@@ -23,7 +23,7 @@ class CommunityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->sentence(),
+            'name' => $this->faker->unique()->sentence(5),
             'description' => $this->faker->text(100),
             'preferredTags' => implode(',', $this->faker->words($this->faker->randomDigitNot(0))),
             'topics' => implode(',', $this->faker->words($this->faker->randomDigitNot(0))),

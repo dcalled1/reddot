@@ -5,7 +5,7 @@
 
     interface ImageStorage
     {
-        public function store(Request $request);
+        public function store(Request $request, $id);
     }
 
 ?>

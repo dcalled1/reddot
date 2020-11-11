@@ -3,11 +3,12 @@
     namespace App\Util;
 
     use App\Interfaces\ImageStorage;
-    use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
     class ImageS3Storage implements ImageStorage
     {
-        public function store($request)
+        public function store(Request $request, $id)
         {
             if ($request->hasFile('post_image'))
             {

@@ -25,11 +25,11 @@ class PostController extends Controller
     //Save Function
     public function save(Request $request)
     {
-        $storeInterface = app(ImageStorage::class);
-        $storeInterface->store($request);
-        print_r($request->only('post_image'));
         Post::validate($request);
-        Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
+        $post = Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request, $post->getId());
+        print_r($request->only('post_image'));
         $data = [];
         $data["success"] = __('Post created correctly!');
         return back()->with('data', $data);
@@ -87,9 +87,9 @@ class PostController extends Controller
         $data["tweetURL"] = $tweetURL;
 
         //Image show
-        error_log(Storage::disk('local')->exists('\public\Post'.$title.'.png'));
-        if(Storage::disk('local')->exists('\public\Post'.$title.'.png')){
-            $image = 'storage/Post'.$title.'.png';
+        error_log(Storage::disk('local')->exists('\public\Post'.$postId.'.png'));
+        if(Storage::disk('local')->exists('\public\Post'.$postId.'.png')){
+            $image = 'storage/Post'.$postId.'.png';
             $data['image'] = $image;
         }else{
             $data['image'] = null;
@@ -102,13 +102,13 @@ class PostController extends Controller
     public function delete(Request $request)
     {;  
         $id = $request["id"];
-        $community = Post::findOrFail($id)->getCommunity();
+        $community = Post::findOrFail($id)->community;
         $res=Post::where('id',$id)->delete();
         $data = [];
         $data["title"] = __("Posts Dashboard");
         $data["success"] = __('Post deleted correctly!');
         $data["post"] = Post::all();
-        return redirect()->route('post.index', $community)->with('data', $data);
+        return redirect()->route('post.index', $community->getId())->with('data', $data);
     }
     
     public function tweet(Request $request)
