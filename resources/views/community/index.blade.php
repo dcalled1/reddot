@@ -18,7 +18,11 @@
                     </nav>
                     <p class="mx-auto text-center">{{ __('Communities') }}</p>
                     <div class="ml-auto">
+                    @if (Auth::user())
                         <a href="{{ route('community.create') }}" class="btn btn-primary text-center">{{ __('Create Community') }}</a>
+                    @else
+                        <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Create Community') }}</a>
+                    @endif
                     </div>                                 
                 </div>
 
