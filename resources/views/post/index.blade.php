@@ -48,11 +48,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            
+                        </div>
+                        <div class="justify-content-center mx-auto">
+                            {!! $data["post"]->links() !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
+    
 </div>
 @endsection

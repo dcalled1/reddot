@@ -28,22 +28,6 @@
                     @endforeach
                 </ul>
                 @endif
-                <div class="card">
-                <div class="card-header">{{ __('Upload image') }}</div>
-                <div class="card-body">
-
-                <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label>{{ __('Image') }}:</label>
-                    <input type="file" name="post_image" />
-                </div>
-                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                </form>
-
-                <img src="{{ URL::asset('storage/test.png') }}" width="300px" height="200x"/>
-                </div>
-            </div>
 
                 <!-- Create Post Form -->
                 <form method="POST" action="{{ route('post.save') }}">
@@ -51,6 +35,8 @@
                         @csrf                       
                         <label for="title">{{ __('Title') }}:</label>
                         <input type="text" placeholder="{{ __('Title of the post') }}" name="title" class="form-control" value="{{ old('title') }}" />
+                        <label for="post_image">{{ __('Image') }}:</label>
+                        <input type="file" name="post_image" class="form-control-file"/>
                         <input type="hidden" value="{{ Auth::user()->id }}" name="author_id" />
                         <input type="hidden"  value="{{ $data['community']->id }}" name="community_id" />
                         <label for="content">{{ __('Content') }}:</label>

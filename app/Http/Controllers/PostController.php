@@ -59,7 +59,7 @@ class PostController extends Controller
     {
         $data = [];
         $data["title"] = __("Posts Dashboard");
-        $data["post"] = Post::all()->where('community_id', $community);
+        $data["post"] = Post::where('community_id', $community)->paginate(8);
         $data["community"] = Community::findOrFail($community);
          return view('post.index')->with("data",$data);
     }

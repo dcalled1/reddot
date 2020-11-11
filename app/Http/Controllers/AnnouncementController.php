@@ -60,7 +60,7 @@ class AnnouncementController extends Controller
     {
         $data = [];
         $data["title"] = __("Announcements Dashboard");
-        $data["announcement"] = Announcement::all()->where('community_id', $community);
+        $data["announcement"] = Announcement::where('community_id', $community)->paginate(8);
         $data["community"] = Community::findOrFail($community);
         return view('announcement.index')->with("data",$data);
     }

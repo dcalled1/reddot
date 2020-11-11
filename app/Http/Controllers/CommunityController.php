@@ -69,7 +69,7 @@ class CommunityController extends Controller
     {
         $data = [];
         $data['title'] = __('Communities');
-        $data['communities'] = Community::all();
+        $data['communities'] = Community::paginate(8);
 
         return view('community.index')->with('data', $data);
     }

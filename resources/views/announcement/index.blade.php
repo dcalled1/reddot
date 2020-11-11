@@ -51,6 +51,9 @@
                             </table>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center mx-auto">
+                        {!! $data["announcement"]->links() !!}
+                    </div>
                 </div>
             </div>
         </div>
