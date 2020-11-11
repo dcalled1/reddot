@@ -55,6 +55,10 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function getAuthor(){
+        return $this->author->getName();
+    }
+
     public function getCommunity(){
         return $this->community->getId();
     }

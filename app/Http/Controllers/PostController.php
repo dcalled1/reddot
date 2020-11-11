@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Community;
 use App\Interfaces\ImageStorage;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 use \Twitter;
+
 
 class PostController extends Controller
 {
@@ -30,7 +32,7 @@ class PostController extends Controller
         Post::create($request->only(['title', 'author_id', 'community_id','content','tags','topics']));
         $data = [];
         $data["success"] = __('Post created correctly!');
-        #return back()->with('data', $data);
+        return back()->with('data', $data);
     }
 
     //Update function
@@ -73,7 +75,16 @@ class PostController extends Controller
     public function show($community, $post)
     {
         $postob = Post::findOrFail($post);
-        return view('post.show')->with("post",$postob);
+        $title = $postob->getTitle();
+        error_log(Storage::disk('local')->exists('\public\Post'.$title.'.png'));
+        if(Storage::disk('local')->exists('\public\Post'.$title.'.png')){
+            $image = 'storage/Post'.$title.'.png';
+            $data['image'] = $image;
+        }else{
+            $data['image'] = null;
+        }
+        $data['post'] = $postob;
+        return view('post.show')->with("data",$data);
     }
 
     //Delete post
