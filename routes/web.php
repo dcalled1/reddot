@@ -61,3 +61,6 @@ Route::get('/language/{lang}', 'App\Http\Controllers\LangController@changeLang')
 
 //twitter
 Route::post('/post/tweet', 'App\Http\Controllers\PostController@tweet')->name("post.tweet");
+
+//Image
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
