@@ -8,7 +8,12 @@ class PostResource extends JsonResource {
 
     public function toArray($request) {
         $comments = CommentResource::collection($this->comments);
-        if(is_null($comments)) $comments = [];
+        if(is_null($comments)) return [
+            'author_name' => $this->author->getName(),
+            'author_email' => $this->author->getEmail(),
+            'title' => $this->getTitle(),
+            'content' => $this->getContent(),
+        ];
         return [
             'author_name' => $this->author->getName(),
             'author_email' => $this->author->getEmail(),

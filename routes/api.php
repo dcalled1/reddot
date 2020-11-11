@@ -25,4 +25,4 @@ Route::get('/communities/{id}/info', [CommunityApi::class, 'info'])->name('api.c
 
 Route::get('/communities/{id}/posts', [CommunityApi::class, 'posts'])->name('api.community.posts');
 
-Route::get('/communities/{id}/posts', [CommunityApi::class, 'announcements'])->name('api.community.announcements');
+Route::get('/communities/{id}/announcements', [CommunityApi::class, 'announcements'])->name('api.community.announcements');

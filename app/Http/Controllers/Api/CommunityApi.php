@@ -23,7 +23,6 @@ class CommunityApi extends Controller {
 
     public function posts($id) {
         $community = Community::findOrFail($id);
-        error_log($community);
         return PostResource::collection($community->posts);
     }
 
