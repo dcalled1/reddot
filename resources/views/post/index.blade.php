@@ -22,7 +22,7 @@
                         @if (Auth::user())
                             <a href="{{ route('post.create', $data['community']->id ) }}" class="btn btn-primary">{{ __('Create Post') }}</a>
                         @else
-                        <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Create Post') }}</a>
+                            <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Create Post') }}</a>
                         @endif
                     </div>               
                 </div>
