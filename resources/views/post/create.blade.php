@@ -28,6 +28,22 @@
                     @endforeach
                 </ul>
                 @endif
+                <div class="card">
+                <div class="card-header">{{ __('Upload image') }}</div>
+                <div class="card-body">
+
+                <form action="{{ route('image.save') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label>{{ __('Image') }}:</label>
+                    <input type="file" name="post_image" />
+                </div>
+                <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                </form>
+
+                <img src="{{ URL::asset('storage/test.png') }}" width="300px" height="200x"/>
+                </div>
+            </div>
 
                 <!-- Create Post Form -->
                 <form method="POST" action="{{ route('post.save') }}">

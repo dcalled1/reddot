@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->mediumtext('content');
             $table->string('tags')->nullable();
             $table->string('topics')->nullable();
-            $table->integer('interactions');
+            //$table->integer('interactions');
             $table->timestamps();
         });
     }
