@@ -42,7 +42,7 @@
                         <input type="text" name="tags" value="{{ old('tags') }}" class="form-control"/>
                         <label for="topics">{{ __('Topics') }}:</label>
                         <input type="text" name="topics" placeholder="{{ __('Announcement Topics') }}" value="{{ old('topics') }}" class="form-control"/>
-                        <label for="expire">{{ __('Expiration Date'): }}</label>
+                        <label for="expire">{{ __('Expiration Date') }}:</label>
                         <input type="date" name="expire" value="{{ old('topics') }}" class="form-control"/>
                         <input type="submit" value="{{ __('Create') }}" class="btn btn-primary mt-3"/>
 

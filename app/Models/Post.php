@@ -51,30 +51,14 @@ class Post extends Model
         $this->attributes['id'] = $id;
     }
 
-    /*public function getLikes(){
-        $this->attributes['likes'];
-    }
-
-    public function getDislikes(){
-        $this->attributes['dislikes'];
-    }*/
-
-    public function getCommunity() {
-        return $this->attributes['community_id'];
-    }
-
     public function author() {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    /*public function likes(){
-        return $this->belongsToMany(User::class, 'user_likes_post');
+    public function getCommunity(){
+        return $this->community->getId();
     }
 
-    public function dislikes(){
-        return $this->belongsToMany(User::class, 'user_dislikes_post');
-    }*/
-    
     public function community() {
         return $this->belongsTo(Community::class, 'community_id');
     }
@@ -113,14 +97,6 @@ class Post extends Model
 
     public function setTitle($title) {
         $this->attributes['title'] = $title;
-    }
-
-    public function getInteractions() {
-        return $this->attributes['interactions'];
-    }
-
-    public function setInteractions($likes, $dislikes) {
-        $this->attributes['interactions'] = $likes + $dislikes;
     }
 
     public function getCreated() {

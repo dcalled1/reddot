@@ -125,7 +125,7 @@
             <p>Luis Fernando Posada - {{ __('Usability Architecture') }}</p>
         </li>
         <li>
-            <p>Santiago Moreno - {{ _('Developer') }}</p>
+            <p>Santiago Moreno - {{ __('Developer') }}</p>
         </li>
         </ul>
 

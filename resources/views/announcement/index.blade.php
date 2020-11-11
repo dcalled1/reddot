@@ -19,7 +19,11 @@
                     </nav>
                     <p class="mx-auto">{{ __('Announcements') }}</p>
                     <div class="ml-auto">
+                    @if (Auth::user())
                         <a href="{{ route('announcement.create', $data['community']->id ) }}" class="btn btn-primary">{{ __('Create Announcement') }}</a>
+                    @else
+                        <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Create Announcement') }}</a>
+                    @endif
                     </div>
 
                 </div>
