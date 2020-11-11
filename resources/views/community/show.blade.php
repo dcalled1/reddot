@@ -44,8 +44,8 @@
                             <h1 class="text-center">{{ $community['name'] }}</h1>
                             <h4 class="text-center">Admin: {{ $community->admin->getEmail() }}</h3>
                             <div class="text-center my-2">
-                                <a href="" class="mr-4">{{ __('Posts') }}</a>
-                                <a href="" class="mr-4">{{ __('Announcements') }}</a>
+                                <a href="{{ route('post.index', $community->getId()) }}" class="mr-4">{{ __('Posts') }}</a>
+                                <a href="{{ route('announcement.index', $community->getId()) }}" class="mr-4">{{ __('Announcements') }}</a>
                             </div>                           
                             <br>
                             <p class="ml-2">{{ __('Description') }}: {{ $community['description'] }}</p>
