@@ -28,8 +28,6 @@ class Post extends Model
     */ 
     protected $fillable = ['title', 'author_id', 'community_id', 'content', 'tags', 'topics'];
 
-    protected $attributes = ['interactions' => 0];
-
     //Metodos
 
     public static function validate(Request $request) {

@@ -100,7 +100,7 @@
             <a href="{{ route('home.index') }}" class="text-white">{{ __('Home') }}</a>
         </li>
         <li>
-            <a href="#!" class="text-white">{{ __('Comunidades') }}</a>
+            <a href="{{ route('community.index') }}" class="text-white">{{ __('Comunidades') }}</a>
         </li>
         <li>
             <a href="#!" class="text-white">{{ __('Contact Us') }}</a>

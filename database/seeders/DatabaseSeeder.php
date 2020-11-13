@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->count(2000)->create();
         Community::factory()->count(600)->create();
-        $posts = Post::factory()->count(20000)->create();
-        $announcements = Announcement::factory()->count(5000)->create();
+        $posts = Post::factory()->count(10000)->create();
+        $announcements = Announcement::factory()->count(1000)->create();
         $comments = Comment::factory()->count(80000)->create();
         foreach($posts as $post) {
             $post->community->addMember($post->author);
