@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Community;
 use App\Interfaces\ImageStorage;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Validator;
 use \Twitter;
 
@@ -114,7 +115,7 @@ class PostController extends Controller
     public function tweet(Request $request) {
         $post = Post::findOrFail($request['id']);
         $title = $post->getTitle();
-        $tweetText = sprintf('"%s". Found this post at ', $title);
-        return Twitter::postTweet(['status' =>'Mi primer tweet desde Laravel','format' =>'json']);
+        $tweetText = sprintf('"%s". Found this post at %s', $title, URL::current());
+        return Twitter::postTweet(['status' => $tweetText, 'format' =>'json']);
     }
 }
