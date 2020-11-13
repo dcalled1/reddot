@@ -20,9 +20,9 @@ class CreateAnnouncementsTable extends Migration
             //$table->integer('like_id');
             //$table->integer('dislike_id');
             $table->foreignId('community_id')->constrained('communities');
-            $table->mediumtext('content');
-            $table->string('tags')->nullable();
-            $table->string('topics')->nullable();
+            $table->text('content');
+            $table->mediumtext('tags')->nullable();
+            $table->mediumtext('topics')->nullable();
             $table->date('expire');
             $table->timestamps();
         });
