@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(20)->create();
-        Community::factory()->count(8)->create();
-        $posts = Post::factory()->count(60)->create();
-        $announcements = Announcement::factory()->count(30)->create();
-        $comments = Comment::factory()->count(200)->create();
+        User::factory()->count(10000)->create();
+        Community::factory()->count(600)->create();
+        $posts = Post::factory()->count(60000)->create();
+        $announcements = Announcement::factory()->count(20000)->create();
+        $comments = Comment::factory()->count(200000)->create();
         foreach($posts as $post) {
             $post->community->addMember($post->author);
         }
