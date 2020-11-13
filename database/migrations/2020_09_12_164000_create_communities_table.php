@@ -15,10 +15,10 @@ class CreateCommunitiesTable extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100)->unique();
-            $table->string('description', 600)->nullable();
-            $table->string('topics', 600)->nullable();
-            $table->string('preferredTags', 600)->nullable();
+            $table->string('name')->unique();
+            $table->mediumtext('description')->nullable();
+            $table->mediumtext('topics')->nullable();
+            $table->mediumtext('preferredTags')->nullable();
             $table->foreignId('admin_id')->constrained('users');
             $table->timestamps();
         });
