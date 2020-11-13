@@ -111,8 +111,10 @@ class PostController extends Controller
         return redirect()->route('post.index', $community->getId())->with('data', $data);
     }
     
-    public function tweet(Request $request)
-    {
+    public function tweet(Request $request) {
+        $post = Post::findOrFail($request['id']);
+        $title = $post->getTitle();
+        $tweetText = sprintf('"%s". Found this post at ', $title);
         return Twitter::postTweet(['status' =>'Mi primer tweet desde Laravel','format' =>'json']);
     }
 }
